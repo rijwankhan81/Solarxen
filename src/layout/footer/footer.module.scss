@@ -4,8 +4,8 @@
 
 .footer {
     padding-top: 80px;
-    color: #564e4c;
-    background: #fff;
+
+    background: #F9FAFB;
     position: relative;
 
 
@@ -29,10 +29,9 @@
         }
 
         h3 {
-            font-size: 14px;
+            font-size: 16px;
             margin-bottom: 20px;
-            color: #978f8d;
-            text-transform: uppercase;
+            font-weight: 700;
 
 
             @media (max-width: $sm) {
@@ -41,8 +40,9 @@
         }
 
         h4 {
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 20px;
+            font-weight: 600;
 
             @media (max-width: $xxl) {
                 font-size: 16px;
@@ -69,20 +69,20 @@
                 }
 
                 img {
-                    width: 200px;
+                    width: 80px;
                     height: auto;
                     background: #ffffff;
                     padding: 10px;
                     border-radius: 8px;
 
                     @media(max-width:$md) {
-                        width: 160px;
+                        width: 60px;
                     }
                 }
             }
 
             p {
-                color: #564e4c;
+                color: $color_three;
 
                 @media (max-width: $sm) {
                     text-align: center;
@@ -90,16 +90,14 @@
             }
 
             .location {
-                a {
-                    color: #fff;
-                }
+                a {}
             }
         }
 
         .footer_menu {
             @media (max-width: $md) {
                 width: 100%;
-                border-bottom: 2px solid #978f8d;
+                border-bottom: 2px solid $color_three;
                 padding-bottom: 30px;
             }
 
@@ -109,7 +107,7 @@
                 margin: 0;
                 display: flex;
                 flex-direction: column;
-                gap: 12px;
+                gap: 16px;
 
                 @media (max-width: $sm) {
 
@@ -132,14 +130,14 @@
 
                     a {
                         text-decoration: none;
-                        color: #564e4c;
+                        color: $color_three;
                         font-size: 16px;
                         font-weight: 400;
 
                     }
 
                     span {
-                        color: #564e4c;
+                        color: $color_three;
                         font-size: 16px;
                         font-weight: 400;
                         width: fit-content;
@@ -154,66 +152,72 @@
 
 
 
+        .connect {
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                margin-bottom: 30px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
 
-    }
+                @media (max-width: $sm) {
+                    justify-content: center;
+                }
 
-    .connect {
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+                a {
+                    text-decoration: none;
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #ffffff2a;
+                    border-radius: 40px;
 
-            @media (max-width: $sm) {
-                justify-content: center;
+                    svg {
+
+
+                        color: $secondary;
+                        font-size: 20px;
+                    }
+                }
             }
 
-            a {
-                text-decoration: none;
-                width: 40px;
-                height: 40px;
+            .download {
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                background: $primary;
-                border-radius: 40px;
+                gap: 8px;
 
-                svg {
-
-
-                    color: #fff;
-                    font-size: 20px;
+                img {
+                    width: 100px;
+                    height: 40px;
+                    object-fit: contain;
+                    border-radius: 12px;
+                    border: 1px solid #4e4e4e;
                 }
             }
         }
-
-
     }
 
     .footer_bootom {
-        padding: 50px 0;
+        padding-top: 50px;
         margin-top: 40px;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-top: 2px solid grey;
+        justify-content: center;
+        border-top: 2px solid #E5E7EB;
 
         @media (max-width: $md) {
-            margin-top: 30px;
             flex-direction: column;
             border: none;
-            padding: 30px 0;
-            gap: 20px;
+            padding: 0;
         }
 
 
         .copyright {
             font-size: 18px;
             font-weight: 400;
-            color: #564e4c;
-            margin: 0%;
+            color: $color_three;
 
             @media (max-width: $md) {
                 font-size: 16px;
@@ -243,7 +247,7 @@
 
 
             a {
-                color: #fff;
+
                 text-decoration: none;
                 font-size: 20px;
                 font-weight: 600;
@@ -267,7 +271,7 @@
 
         a {
             text-decoration: none;
-            color: #564e4c;
+            color: $color_three;
 
             &:hover {
                 color: $primary;

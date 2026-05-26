@@ -2,7 +2,6 @@
 import { Container } from "react-bootstrap";
 import { FaHandSparkles } from "react-icons/fa";
 import { GiWheat, GiKnifeFork } from "react-icons/gi";
-import Divider from "../divider";
 import styles from "./page.module.scss";
 
 export default function Choose() {
@@ -13,7 +12,6 @@ export default function Choose() {
           <div className={styles.head}>
             <h2>why choose us</h2>
             <h3>EXCEPTIONAL quality</h3>
-            <Divider />
           </div>
           <div className={styles.row}>
             <div className={styles.item}>

@@ -1,6 +1,6 @@
 export const navItems = [
-  { label: "About", href: "/about" },
-  { label: "Shop", href: "/shop" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+  { label: "How it Works", href: "/how-it-works" },
+  { label: "Packages", href: "/Packages" },
+  { label: "Live Dashboard", href: "/Live Dashboard" },
+  { label: "Why Us", href: "/Why Us" },
 ];
