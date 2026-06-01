@@ -5,7 +5,6 @@ import NextImage from "@/hooks/NextImage";
 import Footer from "@/layout/footer";
 import { Container } from "react-bootstrap";
 import { features } from "@/constants/features";
-import { packages } from "@/constants/packages";
 import { processData } from "@/constants/processData";
 import Packages from "@/component/packages";
 
@@ -145,7 +144,13 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.chart}>
-              <div className={styles.chartLine}></div>
+              <div className={styles.chartLine}>
+                <NextImage
+                  src="/images/dash-grp.svg"
+                  alt="Solar House"
+                  className={styles.image}
+                />
+              </div>
             </div>{" "}
           </Container>
         </section>

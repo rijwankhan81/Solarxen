@@ -289,23 +289,17 @@
 }
 
 .chart {
-    height: 400px;
+
     margin-top: 40px;
-    background: white;
-    border-radius: 30px;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
+
 }
 
 .chartLine {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 60px;
-    height: 180px;
-    border-radius: 100%;
-    border-top: 4px solid $primary;
+    .image {
+        object-fit: cover;
+        width: 100%;
+        height: auto;
+    }
 }
 
 /* WHY US */

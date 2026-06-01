@@ -6,6 +6,7 @@ import { Container } from "react-bootstrap";
 import { processData } from "@/constants/processData";
 import { features } from "@/constants/HIW-features";
 import { FaChartLine, FaMoneyBillWave, FaBolt } from "react-icons/fa";
+import NextImage from "@/hooks/NextImage";
 
 export default function HowItWorks() {
   return (
@@ -46,31 +47,12 @@ export default function HowItWorks() {
               </div>
             </div>
 
-            <div className={styles.heroCard}>
-              <div className={styles.cardHeader}>
-                <div>
-                  <h3>My Rooftop</h3>
-                  <p>Live Status: Optimizing</p>
-                </div>
-
-                <span className={styles.liveDot}></span>
-              </div>
-
-              <div className={styles.statsRow}>
-                <div className={styles.statBox}>
-                  <p>Live Generation</p>
-                  <h4>4.2 kW</h4>
-                  <span>+12% vs yesterday</span>
-                </div>
-
-                <div className={styles.statBox}>
-                  <p>Monthly Income</p>
-                  <h4>৳12,450</h4>
-                  <span>Peak hours active</span>
-                </div>
-              </div>
-
-              <div className={styles.chart}></div>
+            <div className={styles.chart}>
+              <NextImage
+                src="/images/graph-chart.svg"
+                alt="Solar House"
+                className={styles.image}
+              />
             </div>
           </Container>
         </section>
