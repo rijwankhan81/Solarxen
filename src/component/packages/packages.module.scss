@@ -5,6 +5,14 @@
 
 .packages {
     padding: 100px 0;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
 }
 
 .packageGrid {
@@ -31,6 +39,11 @@
     padding: 40px;
     position: relative;
     border: 1px solid #eee;
+
+    @media (max-width: $sm) {
+        padding: 20px;
+        border-radius: 20px;
+    }
 
     h3 {
         font-size: 28px;
@@ -88,6 +101,10 @@
         width: calc(100% - 80px);
         bottom: 00px;
         border-radius: 14px 14px 0px 0px;
+
+        @media (max-width: $sm) {
+            width: calc(100% - 40px);
+        }
     }
 }
 

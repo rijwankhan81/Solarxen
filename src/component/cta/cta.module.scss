@@ -1,0 +1,47 @@
+@use "../../styles/common" as *;
+@use "../../styles/var" as *;
+
+.cta {
+    padding: 100px 0;
+    background: linear-gradient(to right, #eef6f0, #f7f8f6);
+    text-align: center;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+
+    h2 {
+        font-size: 56px;
+        margin-bottom: 20px;
+        font-weight: 700;
+
+        @media(max-width:$md) {
+            font-size: 42px;
+        }
+    }
+
+    p {
+        max-width: 700px;
+        margin: auto;
+        color: #6b7280;
+        line-height: 1.8;
+        font-size: 18px;
+    }
+}
+
+.ctaButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+
+    @media (max-width: $md) {
+
+        flex-direction: column;
+
+    }
+}

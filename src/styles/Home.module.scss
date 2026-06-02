@@ -8,27 +8,7 @@
     overflow: hidden;
 }
 
-/* SECTION COMMON */
 
-.sectionHeading {
-    text-align: center;
-    margin-bottom: 60px;
-
-    h2 {
-        font-size: 42px;
-        font-weight: 700;
-        color: $color_four;
-        margin-bottom: 12px;
-    }
-
-    p {
-        color: $color_three;
-        font-size: 16px;
-        max-width: 650px;
-        margin: auto;
-        line-height: 1.7;
-    }
-}
 
 /* HERO */
 
@@ -87,40 +67,7 @@
     font-weight: 600;
 }
 
-.heroButtons {
-    display: flex;
-    gap: 20px;
-    margin-top: 35px;
-}
 
-.primaryBtn,
-.secondaryBtn {
-    height: 55px;
-    padding: 0 28px;
-    border-radius: 12px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.primaryBtn {
-    background: $primary;
-    color: white;
-
-    &:hover {
-        background: #095b34;
-    }
-}
-
-.secondaryBtn {
-    background: white;
-    border: 1px solid #ddd;
-
-    &:hover {
-        background: #f3f3f3;
-    }
-}
 
 .stats {
     display: flex;
@@ -388,8 +335,6 @@
         flex-direction: column;
     }
 
-    .sectionHeading h2 {
-        font-size: 34px;
-    }
+
 
 }
