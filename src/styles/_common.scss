@@ -82,4 +82,8 @@ body {
     display: flex;
     gap: 20px;
     margin-top: 35px;
+
+    @media(max-width:$xl) {
+        flex-direction: column;
+    }
 }

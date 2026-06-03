@@ -35,6 +35,14 @@
     background: linear-gradient(180deg,
             #f5faf7 0%,
             #F8FAFC 100%);
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
 }
 
 .heroContent {
