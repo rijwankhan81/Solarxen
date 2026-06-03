@@ -8,6 +8,7 @@ import Footer from "@/layout/footer";
 import CTA from "@/component/cta";
 import { faqData } from "@/constants/faqData";
 import { useState, useMemo } from "react";
+import Head from "next/head";
 
 export default function Earnings() {
   const [capacity, setCapacity] = useState(5);
@@ -29,6 +30,9 @@ export default function Earnings() {
   }, [capacity, usage]);
   return (
     <>
+      <Head>
+        <title>Earnings | Solarxen</title>
+      </Head>
       <Header />
       <main className={styles.main}>
         {/* Hero */}

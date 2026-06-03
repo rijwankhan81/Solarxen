@@ -16,6 +16,7 @@ import Header from "@/layout/header";
 import Footer from "@/layout/footer";
 import CTA from "@/component/cta";
 import NextImage from "@/hooks/NextImage";
+import Head from "next/head";
 
 const valueData = [
   {
@@ -66,6 +67,9 @@ const valuesData = [
 export default function AboutPage() {
   return (
     <>
+      <Head>
+        <title>About | Solarxen</title>
+      </Head>
       <Header />
       <main className={styles.main}>
         {/* Hero */}
