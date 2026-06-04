@@ -791,7 +791,7 @@
         overflow-x: auto;
 
         @media (max-width: $md) {
-            flex-direction: column;
+            flex-wrap: wrap;
             gap: 16px;
         }
     }
