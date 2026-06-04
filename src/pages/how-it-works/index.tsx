@@ -2,11 +2,18 @@ import Head from "next/head";
 import styles from "./how-it-works.module.scss";
 import Header from "@/layout/header";
 import Footer from "@/layout/footer";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { processData } from "@/constants/processData";
 import { features } from "@/constants/HIW-features";
-import { FaChartLine, FaMoneyBillWave, FaBolt } from "react-icons/fa";
+import {
+  FaChartLine,
+  FaMoneyBillWave,
+  FaBolt,
+  FaArrowRight,
+  FaPlay,
+} from "react-icons/fa";
 import NextImage from "@/hooks/NextImage";
+import CTA from "@/component/cta";
 
 export default function HowItWorks() {
   return (
@@ -31,14 +38,13 @@ export default function HowItWorks() {
                 electricity and earn monthly income from your rooftop.
               </p>
 
-              <div className={styles.heroButtons}>
-                <button className={styles.primaryBtn}>
-                  Join Solarxen Network
-                </button>
-
-                <button className={styles.secondaryBtn}>
-                  Explore Solar Packages
-                </button>
+              <div className={styles.hero__actions}>
+                <Button className={styles.btn__primary}>
+                  Join the Network <FaArrowRight />
+                </Button>
+                <Button className={styles.btn__outline}>
+                  <FaPlay /> Explore Packages
+                </Button>
               </div>
 
               <div className={styles.heroTags}>
@@ -61,10 +67,10 @@ export default function HowItWorks() {
         <section className={styles.process}>
           <Container className={styles.container}>
             {" "}
-            <div className={styles.sectionHeading}>
-              <h2>Simple Path to Earning</h2>
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.sectionTitle}>Simple Path to Earning</h2>
 
-              <p>
+              <p className={styles.sectionSub}>
                 Turn your empty rooftop into a smart, income generating asset in
                 five easy steps.
               </p>
@@ -125,9 +131,11 @@ export default function HowItWorks() {
             </div>
 
             <div className={styles.analyticsContent}>
-              <h2>Track Everything in Real-Time</h2>
+              <h2 className={styles.sectionTitle}>
+                Track Everything in Real-Time
+              </h2>
 
-              <p>
+              <p className={styles.sectionSubLeft}>
                 Our smart digital platform gives you complete transparency over
                 your energy production and earnings, right from your phone.
               </p>
@@ -171,10 +179,9 @@ export default function HowItWorks() {
         {/* WHY */}
         <section className={styles.why}>
           <Container className={styles.container}>
-            <div className={styles.sectionHeading}>
-              <h2>Why This Model Works</h2>
-
-              <p>
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.sectionTitle}>Why This Model Works</h2>
+              <p className={styles.sectionSub}>
                 A sustainable ecosystem designed for normal people to
                 participate in the energy transition.
               </p>
@@ -194,27 +201,7 @@ export default function HowItWorks() {
           </Container>
         </section>
 
-        {/* CTA */}
-        <section className={styles.cta}>
-          <Container className={styles.container}>
-            <h2>Start Earning From Your Rooftop</h2>
-
-            <p>
-              Join Solarxen’s growing clean energy network and turn your rooftop
-              into a smart income generating asset.
-            </p>
-
-            <div className={styles.ctaButtons}>
-              <button className={styles.primaryBtn}>
-                Get Free Consultation
-              </button>
-
-              <button className={styles.secondaryBtn}>
-                Explore Solar Packages
-              </button>
-            </div>
-          </Container>
-        </section>
+        <CTA />
       </main>
 
       <Footer />

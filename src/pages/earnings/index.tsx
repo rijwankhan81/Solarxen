@@ -1,6 +1,6 @@
 "use client";
 
-import { Accordion, Container } from "react-bootstrap";
+import { Accordion, Button, Container } from "react-bootstrap";
 
 import styles from "./earnings.module.scss";
 import Header from "@/layout/header";
@@ -9,6 +9,8 @@ import CTA from "@/component/cta";
 import { faqData } from "@/constants/faqData";
 import { useState, useMemo } from "react";
 import Head from "next/head";
+import { FaArrowRight, FaPlay } from "react-icons/fa";
+import Testimonials from "@/component/testimonials";
 
 export default function Earnings() {
   const [capacity, setCapacity] = useState(5);
@@ -49,14 +51,13 @@ export default function Earnings() {
                 Bangladesh.
               </p>
 
-              <div className={styles.heroButtons}>
-                <button className={styles.primaryBtn}>
-                  Calculate My Earnings
-                </button>
-
-                <button className={styles.secondaryBtn}>
-                  Explore Solar Packages
-                </button>
+              <div className={styles.hero__actions}>
+                <Button className={styles.btn__primary}>
+                  Calculate My Earnings <FaArrowRight />
+                </Button>
+                <Button className={styles.btn__outline}>
+                  <FaPlay /> Explore Solar Packages
+                </Button>
               </div>
             </div>
           </Container>
@@ -183,13 +184,17 @@ export default function Earnings() {
             </div>
           </Container>
         </section>
-
+        <Testimonials />
         <section className={styles.faqSection}>
           <Container>
-            <div className={styles.heading}>
-              <h2>Frequently Asked Questions</h2>
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.sectionTitle}>
+                Frequently Asked Questions
+              </h2>
 
-              <p>Everything you need to know about our solar packages.</p>
+              <p className={styles.sectionDescription}>
+                Everything you need to know about our solar packages.
+              </p>
             </div>
 
             <div className={styles.faqWrapper}>

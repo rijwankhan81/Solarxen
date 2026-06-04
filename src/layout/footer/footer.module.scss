@@ -29,9 +29,11 @@
         }
 
         h3 {
-            font-size: 16px;
+            font-family: $font-display;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: $text;
             margin-bottom: 20px;
-            font-weight: 700;
 
 
             @media (max-width: $sm) {
@@ -80,7 +82,7 @@
             }
 
             p {
-                color: $color_three;
+                color: $gray-600;
 
                 @media (max-width: $sm) {
                     text-align: center;
@@ -95,7 +97,7 @@
         .footer_menu {
             @media (max-width: $md) {
                 width: 100%;
-                border-bottom: 2px solid $color_three;
+                border-bottom: 2px solid $gray-600;
                 padding-bottom: 30px;
             }
 
@@ -128,21 +130,21 @@
 
                     a {
                         text-decoration: none;
-                        color: $color_three;
+                        color: $gray-600;
                         font-size: 16px;
                         font-weight: 400;
 
                     }
 
                     span {
-                        color: $color_three;
+                        color: $gray-600;
                         font-size: 16px;
                         font-weight: 400;
                         width: fit-content;
                     }
 
                     .active {
-                        color: $secondary;
+                        color: $yellow;
                     }
                 }
             }
@@ -177,7 +179,7 @@
                     svg {
 
 
-                        color: $secondary;
+                        color: $yellow;
                         font-size: 20px;
                     }
                 }
@@ -215,7 +217,7 @@
         .copyright {
             font-size: 18px;
             font-weight: 400;
-            color: $color_three;
+            color: $gray-600;
 
             @media (max-width: $md) {
                 font-size: 16px;
@@ -269,10 +271,10 @@
 
         a {
             text-decoration: none;
-            color: $color_three;
+            color: $gray-600;
 
             &:hover {
-                color: $primary;
+                color: $green;
             }
         }
     }

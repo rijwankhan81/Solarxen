@@ -10,9 +10,11 @@ export default function Packages() {
       <section className={styles.packages}>
         <Container className={styles.container}>
           {" "}
-          <div className={styles.sectionHeading}>
-            <h2>Transparent Solar Packages</h2>
-            <p>Choose the right capacity for your rooftop and start earning.</p>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Transparent Solar Packages</h2>
+            <p className={styles.sectionSub}>
+              Choose the right capacity for your rooftop and start earning.
+            </p>
           </div>
           <div className={styles.packageGrid}>
             {packages.map((item, index) => (

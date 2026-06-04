@@ -1,0 +1,1174 @@
+@use "../../styles/var" as *;
+@use "../../styles/common" as *;
+
+
+
+
+
+
+.liveDot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulseDot 1.6s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.4);
+    }
+}
+
+
+
+
+
+// ── Hero ──────────────────────────────────────────────────────────────────
+.hero {
+    position: relative;
+    padding: 140px 0 80px;
+    overflow: hidden;
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    &__bgGrid {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(11, 107, 58, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(11, 107, 58, 0.04) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+
+    &__bgGlow1 {
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(249, 178, 51, 0.12), transparent 70%);
+        border-radius: 50%;
+    }
+
+    &__bgGlow2 {
+        position: absolute;
+        bottom: -80px;
+        left: -80px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(11, 107, 58, 0.08), transparent 70%);
+        border-radius: 50%;
+    }
+
+    &__badge {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 8px;
+        background: $green-light !important;
+        color: $green !important;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 8px 16px;
+        border-radius: $radius-full;
+        margin-bottom: 1.25rem;
+    }
+
+    &__headline {
+        font-family: $font-display;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 900;
+        line-height: 1.15;
+        color: $text;
+        margin-bottom: 1.25rem;
+    }
+
+    &__headlineAccent {
+        color: $green;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, $green, $yellow);
+            border-radius: 2px;
+        }
+    }
+
+    &__sub {
+        font-size: 1.1rem;
+        color: $gray-600;
+        line-height: 1.75;
+        max-width: 520px;
+        margin-bottom: 2rem;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+    }
+
+    &__quickStats {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 16px 24px;
+        box-shadow: $shadow-sm;
+        display: inline-flex;
+    }
+
+    &__qs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        strong {
+            font-family: $font-display;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: $green;
+        }
+
+        span {
+            font-size: 0.72rem;
+            color: $gray-400;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+    }
+
+    &__qsDivider {
+        width: 1px;
+        height: 36px;
+        background: $gray-200;
+    }
+
+    &__visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+// ── Bangladesh Map ────────────────────────────────────────────────────────
+.mapWrapper {
+    position: relative;
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-xl;
+    padding: 20px;
+    box-shadow: $shadow-lg;
+    overflow: hidden;
+    width: 100%;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 70% 30%, rgba(249, 178, 51, 0.06), transparent 60%);
+        pointer-events: none;
+    }
+}
+
+.mapSvg {
+    width: 100%;
+    max-height: 420px;
+}
+
+.mapNode {
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover circle:last-of-type {
+        fill: $yellow;
+    }
+}
+
+.mapLine {
+    animation: dashMove 3s linear infinite;
+}
+
+@keyframes dashMove {
+    to {
+        stroke-dashoffset: -20;
+    }
+}
+
+.mapBadge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-full;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: $gray-800;
+    box-shadow: $shadow-sm;
+    white-space: nowrap;
+
+    svg {
+        color: $green;
+        font-size: 0.85rem;
+    }
+
+    &--tl {
+        top: 16px;
+        left: 16px;
+    }
+
+    &--tr {
+        top: 16px;
+        right: 16px;
+    }
+
+    &--bl {
+        bottom: 16px;
+        left: 16px;
+    }
+}
+
+// ── Stats Section ─────────────────────────────────────────────────────────
+.stats {
+    padding: 80px 0;
+    background: $gray-50;
+    border-top: 1px solid $gray-200;
+    border-bottom: 1px solid $gray-200;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.statCard {
+    background: $white;
+    border-radius: $radius-lg;
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: $shadow-sm;
+    border: 1px solid $gray-200;
+    transition: $transition;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        border-radius: $radius-lg $radius-lg 0 0;
+    }
+
+    &--green::before {
+        background: $green;
+    }
+
+    &--yellow::before {
+        background: $yellow;
+    }
+
+    &--blue::before {
+        background: $blue;
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-md;
+    }
+
+    &__icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+
+        .statCard--green & {
+            color: $green;
+        }
+
+        .statCard--yellow & {
+            color: $yellow;
+        }
+
+        .statCard--blue & {
+            color: $blue;
+        }
+    }
+
+    &__value {
+        font-family: $font-display;
+        font-size: 2rem;
+        font-weight: 900;
+        color: $text;
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    &__label {
+        font-size: 0.82rem;
+        color: $gray-600;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+}
+
+// ── Map Section ───────────────────────────────────────────────────────────
+.mapSection {
+    padding: 80px 0;
+    background: $white;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.mapLegend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 1.5rem 0;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: $gray-600;
+    }
+
+    &__dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+
+        &--green {
+            background: $green;
+        }
+
+        &--yellow {
+            background: $yellow;
+        }
+
+        &--blue {
+            background: $blue;
+        }
+    }
+}
+
+.mapCities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.5rem;
+}
+
+.mapCityChip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: $gray-50;
+    border: 1px solid $gray-200;
+    border-radius: $radius-full;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: $gray-800;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    svg {
+        color: $green;
+        font-size: 0.75rem;
+    }
+
+    &:hover {
+        background: $green-light;
+        border-color: $green;
+        color: $green;
+    }
+}
+
+.mapLargeWrapper {
+    position: relative;
+
+    .mapWrapper {
+        padding: 28px;
+    }
+}
+
+.mapControls {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mapControl {
+    width: 32px;
+    height: 32px;
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $gray-800;
+    cursor: pointer;
+    transition: $transition-fast;
+    box-shadow: $shadow-sm;
+
+    &:hover {
+        background: $green;
+        color: $white;
+        border-color: $green;
+    }
+}
+
+// ── Impact Section ────────────────────────────────────────────────────────
+.impact {
+    padding: 80px 0;
+    background: $gray-50;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.impactCard {
+    background: $white;
+    border-radius: $radius-lg;
+    padding: 28px 24px;
+    box-shadow: $shadow-sm;
+    border: 1px solid $gray-200;
+    transition: $transition;
+    height: 100%;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-md;
+    }
+
+    &__icon {
+        width: 56px;
+        height: 56px;
+        border-radius: $radius-md;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+
+        .impactCard--green & {
+            background: $green-light;
+            color: $green;
+        }
+
+        .impactCard--yellow & {
+            background: $yellow-light;
+            color: darken($yellow, 20%);
+        }
+
+        .impactCard--blue & {
+            background: $blue-light;
+            color: $blue;
+        }
+    }
+
+    &__value {
+        font-family: $font-display;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: $text;
+        margin-bottom: 6px;
+    }
+
+    &__label {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: $gray-800;
+        margin-bottom: 8px;
+    }
+
+    &__desc {
+        font-size: 0.85rem;
+        color: $gray-600;
+        line-height: 1.6;
+        margin-bottom: 16px;
+    }
+
+    &__bar {
+        height: 6px;
+        background: $gray-100;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 6px;
+    }
+
+    &__barFill {
+        height: 100%;
+        border-radius: 3px;
+        transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .impactCard--green & {
+            background: $green;
+        }
+
+        .impactCard--yellow & {
+            background: $yellow;
+        }
+
+        .impactCard--blue & {
+            background: $blue;
+        }
+    }
+
+    &__pct {
+        font-size: 0.75rem;
+        color: $gray-400;
+        font-weight: 600;
+    }
+}
+
+// ── Monitoring Section ────────────────────────────────────────────────────
+.monitoring {
+    padding: 80px 0;
+    background: $white;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.monitoringFeatures {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 1.5rem;
+}
+
+.monitorFeature {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: $gray-50;
+    border: 1px solid $gray-200;
+    border-radius: $radius-md;
+    padding: 14px 18px;
+    transition: $transition-fast;
+
+    &:hover {
+        background: $green-light;
+        border-color: lighten($green, 40%);
+    }
+
+    &__icon {
+        width: 40px;
+        height: 40px;
+        border-radius: $radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+
+        &--green {
+            background: $green-light;
+            color: $green;
+        }
+
+        &--yellow {
+            background: $yellow-light;
+            color: darken($yellow, 20%);
+        }
+
+        &--blue {
+            background: $blue-light;
+            color: $blue;
+        }
+    }
+
+    &__text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        span {
+            font-size: 0.82rem;
+            color: $gray-600;
+        }
+
+        strong {
+            font-size: 0.95rem;
+            color: $text;
+            font-weight: 700;
+        }
+    }
+
+    &__dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+
+        &--green {
+            background: #22c55e;
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        &--yellow {
+            background: $yellow;
+        }
+
+        &--blue {
+            background: $blue;
+        }
+    }
+}
+
+// ── Dashboard Mock ────────────────────────────────────────────────────────
+.dashboardMock {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-lg;
+    overflow: hidden;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        background: $gray-50;
+        border-bottom: 1px solid $gray-200;
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: $text;
+
+        svg {
+            color: $green;
+            font-size: 1.1rem;
+        }
+    }
+
+    &__widgets {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: $gray-200;
+    }
+
+    &__notification {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 20px;
+        background: $yellow-light;
+        border-top: 1px solid lighten($yellow, 30%);
+        font-size: 0.82rem;
+        color: darken($yellow, 30%);
+        font-weight: 500;
+    }
+}
+
+.liveBadge {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    background: $green !important;
+    color: $white !important;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: $radius-full;
+}
+
+.notifIcon {
+    color: darken($yellow, 20%);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.widget {
+    background: $white;
+    padding: 18px;
+
+    &__label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: $gray-400;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    &__value {
+        font-family: $font-display;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+
+        &--green {
+            color: $green;
+        }
+
+        &--yellow {
+            color: darken($yellow, 18%);
+        }
+
+        &--blue {
+            color: $blue;
+        }
+    }
+
+    &__bar {
+        height: 5px;
+        background: $gray-100;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 6px;
+    }
+
+    &__barFill {
+        height: 100%;
+        border-radius: 3px;
+        background: $green;
+        transition: width 1.5s ease;
+
+        &--yellow {
+            background: $yellow;
+        }
+
+        &--blue {
+            background: $blue;
+        }
+    }
+
+    &__sub {
+        font-size: 0.72rem;
+        color: $gray-400;
+    }
+
+    &__statusRow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+    }
+
+    &__statusChip {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.68rem;
+        color: $gray-600;
+        background: $gray-50;
+        border: 1px solid $gray-200;
+        border-radius: $radius-full;
+        padding: 3px 8px;
+    }
+}
+
+.statusOk {
+    color: #22c55e;
+    font-size: 0.75rem;
+}
+
+// ── Growth Section ────────────────────────────────────────────────────────
+.growth {
+    padding: 80px 0;
+    background: $gray-50;
+}
+
+.chartCard {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-xl;
+    padding: 28px;
+    box-shadow: $shadow-sm;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: $gray-800;
+    }
+}
+
+.chartLegend {
+    display: flex;
+    gap: 16px;
+    font-size: 0.8rem;
+
+    &__green {
+        color: $green;
+    }
+
+    &__yellow {
+        color: darken($yellow, 20%);
+    }
+}
+
+.chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 160px;
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        flex: 1;
+    }
+
+    &__bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 3px;
+        height: 140px;
+        width: 100%;
+    }
+
+    &__bar {
+        flex: 1;
+        border-radius: 4px 4px 0 0;
+        transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &--green {
+            background: $green;
+            opacity: 0.85;
+        }
+
+        &--yellow {
+            background: $yellow;
+            opacity: 0.85;
+        }
+    }
+
+    &__label {
+        font-size: 0.7rem;
+        color: $gray-400;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+}
+
+.growthMetrics {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.growthMetric {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-md;
+    padding: 16px 18px;
+    box-shadow: $shadow-sm;
+
+    &__icon {
+        width: 40px;
+        height: 40px;
+        background: $green-light;
+        color: $green;
+        border-radius: $radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+    }
+
+    &__value {
+        font-family: $font-display;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: $green;
+        line-height: 1;
+    }
+
+    &__label {
+        font-size: 0.78rem;
+        color: $gray-600;
+        margin-top: 2px;
+    }
+
+    &__badge {
+        margin-left: auto;
+        background: $green-light !important;
+        color: $green !important;
+        font-size: 0.7rem;
+        font-weight: 700;
+        border-radius: $radius-full;
+        padding: 4px 10px;
+        white-space: nowrap;
+    }
+}
+
+
+
+// ── Why Join ──────────────────────────────────────────────────────────────
+.whyJoin {
+    padding: 80px 0;
+    background: $gray-50;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.featureCard {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-xl;
+    padding: 32px 28px;
+    box-shadow: $shadow-sm;
+    transition: $transition;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: $shadow-lg;
+        border-color: lighten($green, 40%);
+
+        .featureCard__arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .featureCard__icon {
+            background: $green;
+            color: $white;
+        }
+    }
+
+    &__icon {
+        width: 56px;
+        height: 56px;
+        background: $green-light;
+        color: $green;
+        border-radius: $radius-md;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        margin-bottom: 18px;
+        transition: $transition;
+    }
+
+    &__title {
+        font-family: $font-display;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: $text;
+        margin-bottom: 10px;
+    }
+
+    &__desc {
+        font-size: 0.88rem;
+        color: $gray-600;
+        line-height: 1.7;
+    }
+
+    &__arrow {
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        color: $green;
+        font-size: 1rem;
+        opacity: 0;
+        transform: translateX(-8px);
+        transition: $transition;
+    }
+}
+
+// ── Future Section ────────────────────────────────────────────────────────
+.future {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, $green 0%, darken($green, 15%) 100%);
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+    }
+
+    .sectionHeader {
+        margin-bottom: 0;
+    }
+
+    .sectionSub {
+        text-align: left;
+        margin: 0;
+    }
+}
+
+.futureGoals {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 2rem;
+}
+
+.futureGoal {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: $radius-md;
+    padding: 14px 18px;
+    color: $white;
+    font-weight: 500;
+    font-size: 0.92rem;
+    transition: $transition-fast;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.14);
+    }
+
+    &__icon {
+        width: 36px;
+        height: 36px;
+        background: rgba(249, 178, 51, 0.2);
+        color: $yellow;
+        border-radius: $radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+}
+
+.futureViz {
+    &__city {
+        width: 100%;
+    }
+
+    &__svg {
+        width: 100%;
+        border-radius: $radius-xl;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.06);
+    }
+}
+
+
+
+
+// ── Responsive ────────────────────────────────────────────────────────────
+@media (max-width: $lg) {
+    .hero {
+        padding: 110px 0 60px;
+    }
+
+    .hero__visual {
+        margin-top: 2rem;
+    }
+
+    .dashboardMock__widgets {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .futureViz {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: $sm) {
+    .hero__quickStats {
+
+        gap: 12px;
+    }
+
+    .hero__qsDivider {
+        width: 80px;
+        height: 1px;
+    }
+
+    .dashboardMock__widgets {
+        grid-template-columns: 1fr;
+    }
+
+    .chart {
+        gap: 4px;
+    }
+}

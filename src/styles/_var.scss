@@ -1,10 +1,36 @@
-$primary: #0B6B3A;
-$secondary: #F9B233;
-$color_three: #4B5563;
-$color_four: #1A1A1A;
-$color_five: #F7F3E4;
+// ── Solarxen Design Tokens ────────────────────────────────────────────────
+$green: #0B6B3A;
+$green-light: #E8F5EE;
+$green-mid: #1A8A4A;
+$yellow: #F9B233;
+$yellow-light: #FFF8E7;
+$blue: #1E88E5;
+$blue-light: #E3F2FD;
+$white: #FFFFFF;
+$gray-50: #F8FAFC;
+$gray-100: #F0F4F8;
+$gray-200: #E2E8F0;
+$gray-400: #94A3B8;
+$gray-600: #475569;
+$gray-800: #1E293B;
+$text: #1A2E20;
 
-$font_one: "Inter", sans-serif;
+$radius-sm: 8px;
+$radius-md: 16px;
+$radius-lg: 24px;
+$radius-xl: 32px;
+$radius-full: 100px;
+
+$shadow-sm: 0 2px 8px rgba(11, 107, 58, 0.08);
+$shadow-md: 0 8px 24px rgba(11, 107, 58, 0.12);
+$shadow-lg: 0 16px 48px rgba(11, 107, 58, 0.15);
+
+$font-display: 'Clash Display', 'Plus Jakarta Sans', 'DM Sans', system-ui, sans-serif;
+$font-body: 'DM Sans', 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+
+$transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-fast: all 0.2s ease;
+
 
 $xxxl: 1759px;
 $xxl: 1399px;

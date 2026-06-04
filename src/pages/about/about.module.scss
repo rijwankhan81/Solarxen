@@ -1,274 +1,1682 @@
 @use "../../styles/var" as *;
 @use "../../styles/common" as *;
 
-.main {
-    background: #fff;
+
+
+// ── Helpers ───────────────────────────────────────────────────────────────
+.liveDot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulseDot 1.6s ease-in-out infinite;
 }
 
-.section {
-    padding: 100px 0;
-
-    @media(max-width:$xl) {
-        padding: 70px 0;
-    }
-
-    @media(max-width:$lg) {
-        padding: 50px 0;
-    }
-}
-
-.sectionGray {
-    padding: 100px 0;
-    background: #F8FAFC;
-
-    @media(max-width:$xl) {
-        padding: 70px 0;
-    }
-
-    @media(max-width:$lg) {
-        padding: 50px 0;
-    }
-}
-
-.heroSection {
-    padding: 100px 0;
-    background: linear-gradient(180deg,
-            #f5faf7 0%,
-            #F8FAFC 100%);
-
-    @media(max-width:$xl) {
-        padding: 70px 0;
-    }
-
-    @media(max-width:$lg) {
-        padding: 50px 0;
-    }
-}
-
-.heroContent {
-    text-align: center;
-    max-width: 950px;
-    margin: auto;
-
-    h1 {
-        font-size: 62px;
-        font-weight: 800;
-        line-height: 1.1;
-        margin: 20px 0 30px;
-    }
-
-    p {
-        max-width: 750px;
-        margin: auto;
-        color: #6b7280;
-        line-height: 1.9;
-    }
-}
-
-.badge,
-.label,
-.heading span {
-    color: $primary;
-    font-weight: 600;
-    padding: 10px 20px;
-    background: rgba(15, 138, 75, .1);
-    border-radius: 30px;
-}
-
-.heroStats {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-
-    @media(max-width:$md) {
-        margin-top: 30px;
-    }
-
-    div {
-        background: white;
-        border-radius: 20px;
-        padding: 25px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, .04);
-    }
-
-    h3 {
-        color: $primary;
-        font-size: 32px;
-    }
-}
-
-.missionGrid,
-.challengeGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+.liveBadge {
+    display: inline-flex !important;
     align-items: center;
+    gap: 6px;
+    background: $green !important;
+    color: $white !important;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: $radius-full;
+}
 
-    h2 {
-        font-size: 42px;
-        margin: 20px 0;
-        font-weight: 700;
+.livePulse {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulseDot 1.6s ease-in-out infinite;
+}
 
-        @media(max-width:$xl) {
+@keyframes pulseDot {
 
-            font-size: 34px;
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 
+    50% {
+        opacity: 0.45;
+        transform: scale(1.5);
+    }
+}
+
+
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 1 — HERO
+// ══════════════════════════════════════════════════════════════════════════
+.hero {
+    position: relative;
+    padding: 140px 0 80px;
+    overflow: hidden;
+    background: $white;
+
+    &__bgGrid {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(11, 107, 58, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(11, 107, 58, 0.035) 1px, transparent 1px);
+        background-size: 44px 44px;
+        pointer-events: none;
+    }
+
+    &__bgGlow1 {
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 560px;
+        height: 560px;
+        background: radial-gradient(circle, rgba(249, 178, 51, 0.1), transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    &__bgGlow2 {
+        position: absolute;
+        bottom: -80px;
+        left: -80px;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(circle, rgba(11, 107, 58, 0.07), transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    &__bgOrb {
+        position: absolute;
+        top: 30%;
+        right: 20%;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(30, 136, 229, 0.06), transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    &__container {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__badgeRow {
+        margin-bottom: 1.25rem;
+    }
+
+    &__left {
+        animation: fadeSlideUp 0.8s ease both;
+    }
+
+    &__headline {
+        font-family: $font-display;
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        font-weight: 900;
+        line-height: 1.12;
+        color: $text;
+        margin-bottom: 1.25rem;
+    }
+
+    &__accentLine {
+        color: $green;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, $green, $yellow);
+            border-radius: 2px;
         }
     }
 
-    p {
-        color: #6b7280;
-        line-height: 1.9;
+    &__sub {
+        font-size: 1.1rem;
+        color: $gray-600;
+        line-height: 1.75;
+        max-width: 520px;
+        margin-bottom: 1.75rem;
     }
-}
 
-.missionCard {
-    .image {
+    &__checks {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 2rem;
+    }
+
+    &__check {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: $gray-600;
+        font-weight: 500;
+    }
+
+    &__checkIcon {
+        color: $green;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+
+    &__trust {
+        display: inline-flex;
+        align-items: center;
+        gap: 20px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 14px 22px;
+        box-shadow: $shadow-sm;
+        flex-wrap: wrap;
+    }
+
+    &__trustItem {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.82rem;
+        color: $gray-600;
+
+        strong {
+            color: $text;
+        }
+    }
+
+    &__trustDivider {
+        width: 1px;
+        height: 28px;
+        background: $gray-200;
+    }
+
+    &__trustStar {
+        color: $yellow;
+        font-size: 0.85rem;
+    }
+
+    &__trustIcon {
+        color: $green;
+        font-size: 0.85rem;
+    }
+
+    // Right visual
+    &__right {
+        animation: fadeSlideUp 0.8s 0.2s ease both;
+    }
+
+    &__visual {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__dashCard {
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-xl;
+        box-shadow: $shadow-lg;
+        overflow: hidden;
+        position: relative;
+    }
+
+    &__dashCardHeader {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 18px;
+        background: $gray-50;
+        border-bottom: 1px solid $gray-200;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: $gray-800;
+
+        svg {
+            color: $green;
+            font-size: 1.1rem;
+        }
+    }
+
+    &__dashCardStats {
+        display: flex;
+        padding: 18px;
+        gap: 8px;
+    }
+
+    &__dashStat {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+
+        span {
+            font-size: 0.72rem;
+            color: $gray-400;
+            text-align: center;
+        }
+    }
+
+    &__dashStatDivider {
+        width: 1px;
+        background: $gray-200;
+        align-self: stretch;
+    }
+
+    &__dashStatVal {
+        font-family: $font-display;
+        font-size: 1.3rem;
+        font-weight: 800;
+
+        &--green {
+            color: $green;
+        }
+
+        &--yellow {
+            color: darken($yellow, 18%);
+        }
+
+        &--blue {
+            color: $blue;
+        }
+    }
+
+    &__sparkline {
+        padding: 0 18px 16px;
+    }
+
+    &__sparklineSvg {
         width: 100%;
-        border-radius: 24px;
-        object-fit: cover;
+        height: 44px;
+    }
+
+    &__sparklineLabels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 4px;
+
+        span {
+            font-size: 0.62rem;
+            color: $gray-400;
+        }
+    }
+
+    // Floating cards
+    &__floatCard1 {
+        position: absolute;
+        top: -16px;
+        right: -16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 12px 16px;
+        box-shadow: $shadow-md;
+        animation: floatY 3s ease-in-out infinite;
+
+        strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            color: $green;
+        }
+
+        span {
+            display: block;
+            font-size: 0.7rem;
+            color: $gray-400;
+        }
+    }
+
+    &__floatCard2 {
+        position: absolute;
+        bottom: 70px;
+        left: -16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 12px 16px;
+        box-shadow: $shadow-md;
+        animation: floatY 3.5s 0.5s ease-in-out infinite;
+
+        strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            color: $text;
+        }
+
+        span {
+            display: block;
+            font-size: 0.7rem;
+            color: $gray-400;
+        }
+    }
+
+    &__floatIcon {
+        font-size: 1.4rem;
+        color: $yellow;
+    }
+
+    &__floatIcon2 {
+        font-size: 1.4rem;
+        color: $green;
+    }
+
+    &__rooftopRow {
+        display: flex;
+        gap: 12px;
+        margin-top: 8px;
+    }
+
+    &__rooftopItem {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__rooftopLabel {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: $gray-400;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
     }
 }
 
-.cardHeader {
+.rooftopSvg {
+    width: 100%;
+    border-radius: $radius-lg;
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatY {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 2 — STORY
+// ══════════════════════════════════════════════════════════════════════════
+.story {
+    padding: 80px 0;
+    background: $gray-50;
+    border-top: 1px solid $gray-200;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+
+    &__visual {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    &__visualLabel {
+        font-size: 0.8rem;
+        color: $gray-400;
+        font-style: italic;
+        text-align: center;
+
+        &--green {
+            color: $green;
+            font-weight: 600;
+            font-style: normal;
+        }
+    }
+
+    &__block {
+        padding: 8px 0;
+    }
+
+    &__tag {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(148, 163, 184, 0.12);
+        color: $gray-600;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: $radius-full;
+        margin-bottom: 1rem;
+
+        &--green {
+            background: $green-light;
+            color: $green;
+        }
+    }
+
+    &__blockTitle {
+        font-family: $font-display;
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        font-weight: 800;
+        color: $text;
+        line-height: 1.25;
+        margin-bottom: 1rem;
+    }
+
+    &__stat {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+        padding: 20px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        box-shadow: $shadow-sm;
+    }
+
+    &__statItem {
+        display: flex;
+        flex-direction: column;
+
+        strong {
+            font-family: $font-display;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: $green;
+            line-height: 1;
+        }
+
+        span {
+            font-size: 0.78rem;
+            color: $gray-600;
+            margin-top: 4px;
+        }
+    }
+
+    &__pillars {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 1.5rem;
+    }
+
+    &__pillar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: $green-light;
+        color: $green;
+        border-radius: $radius-full;
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: $transition-fast;
+
+        &:hover {
+            background: $green;
+            color: $white;
+        }
+    }
+
+    &__pillarIcon {
+        font-size: 0.95rem;
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 3 — MISSION
+// ══════════════════════════════════════════════════════════════════════════
+.mission {
+    padding: 80px 0;
+    position: relative;
+    background: linear-gradient(135deg, $green 0%, darken($green, 14%) 100%);
+    overflow: hidden;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 44px 44px;
+        pointer-events: none;
+    }
+
+    &__card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: $radius-xl;
+        padding: 56px 48px;
+        text-align: center;
+        backdrop-filter: blur(4px);
+
+        @media (max-width: $md) {
+            padding: 36px 24px;
+        }
+    }
+
+    &__quoteIcon {
+        font-size: 2.5rem;
+        color: $yellow;
+        margin-bottom: 1.5rem;
+        opacity: 0.7;
+    }
+
+    &__statement {
+        font-family: $font-display;
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        font-weight: 700;
+        color: $white;
+        line-height: 1.5;
+        max-width: 720px;
+        margin: 0 auto 3rem;
+    }
+
+    &__accent {
+        color: $yellow;
+        font-style: italic;
+    }
+
+    &__pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+
+        @media (max-width: $md) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__pillar {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: $radius-lg;
+        padding: 24px 20px;
+        transition: $transition-fast;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+    }
+
+    &__pillarIcon {
+        width: 48px;
+        height: 48px;
+        background: rgba(249, 178, 51, 0.15);
+        color: $yellow;
+        border-radius: $radius-md;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        margin: 0 auto 14px;
+    }
+
+    &__pillarTitle {
+        font-family: $font-display;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: $white;
+        margin-bottom: 8px;
+    }
+
+    &__pillarDesc {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.6;
+        margin: 0;
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 4 — VISION
+// ══════════════════════════════════════════════════════════════════════════
+.vision {
+    padding: 80px 0;
+    background: $white;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+
+    &__goals {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 2rem;
+    }
+
+    &__goal {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: $gray-50;
+        border: 1px solid $gray-200;
+        border-radius: $radius-md;
+        padding: 14px 18px;
+        transition: $transition-fast;
+
+        &:hover {
+            background: $green-light;
+            border-color: lighten($green, 40%);
+        }
+    }
+
+    &__goalIcon {
+        width: 38px;
+        height: 38px;
+        background: $green-light;
+        color: $green;
+        border-radius: $radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    &__goalValue {
+        display: block;
+        font-family: $font-display;
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: $green;
+        line-height: 1;
+    }
+
+    &__goalLabel {
+        display: block;
+        font-size: 0.8rem;
+        color: $gray-600;
+        margin-top: 3px;
+    }
+
+    &__mapCard {
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-xl;
+        box-shadow: $shadow-lg;
+        overflow: hidden;
+        padding: 8px;
+    }
+
+    &__svg {
+        width: 100%;
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 5 — IMPACT
+// ══════════════════════════════════════════════════════════════════════════
+.impact {
+    padding: 80px 0;
+    background: $gray-50;
+    border-top: 1px solid $gray-200;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+
+    &__timeline {
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
+        margin-top: 3.5rem;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-xl;
+        padding: 32px 24px;
+        box-shadow: $shadow-sm;
+        overflow-x: auto;
+
+        @media (max-width: $md) {
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    &__timelineItem {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+        text-align: center;
+
+        &:not(:last-child) &:after {
+            content: '';
+        }
+    }
+
+    &__timelineIcon {
+        width: 44px;
+        height: 44px;
+        background: $green-light;
+        color: $green;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        z-index: 1;
+        position: relative;
+    }
+
+    &__timelineLine {
+        position: absolute;
+        top: 22px;
+        left: calc(50% + 22px);
+        right: calc(-50% + 22px);
+        height: 2px;
+        background: $gray-200;
+
+        @media (max-width: $md) {
+            display: none;
+        }
+    }
+
+    &__timelineYear {
+        font-family: $font-display;
+        font-size: 1rem;
+        font-weight: 800;
+        color: $green;
+    }
+
+    &__timelineEvent {
+        font-size: 0.78rem;
+        color: $gray-600;
+        font-weight: 500;
+        max-width: 100px;
+        text-align: center;
+    }
+}
+
+// Counter Card
+.counterCard {
+    background: $white;
+    border-radius: $radius-lg;
+    padding: 28px 22px;
+    text-align: center;
+    box-shadow: $shadow-sm;
+    border: 1px solid $gray-200;
+    position: relative;
+    overflow: hidden;
+    transition: $transition;
+    height: 100%;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        border-radius: $radius-lg $radius-lg 0 0;
+    }
+
+    &--green::before {
+        background: $green;
+    }
+
+    &--yellow::before {
+        background: $yellow;
+    }
+
+    &--blue::before {
+        background: $blue;
+    }
+
+    &--teal::before {
+        background: linear-gradient(90deg, $green, $blue);
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-md;
+    }
+
+    &__icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        display: block;
+
+        .counterCard--green & {
+            color: $green;
+        }
+
+        .counterCard--yellow & {
+            color: darken($yellow, 18%);
+        }
+
+        .counterCard--blue & {
+            color: $blue;
+        }
+
+        .counterCard--teal & {
+            color: $green;
+        }
+    }
+
+    &__num {
+        font-family: $font-display;
+        font-size: 2rem;
+        font-weight: 900;
+        color: $text;
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    &__label {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: $gray-800;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 8px;
+    }
+
+    &__desc {
+        font-size: 0.8rem;
+        color: $gray-400;
+        line-height: 1.5;
+        margin: 0;
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 6 — TECHNOLOGY
+// ══════════════════════════════════════════════════════════════════════════
+.technology {
+    padding: 80px 0;
+    background: $white;
+    position: relative;
+    overflow: hidden;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+
+    &__bgLines {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(30, 136, 229, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(30, 136, 229, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+    }
+}
+
+.tech {
+    &__featureList {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 1.5rem;
+    }
+
+    &__feature {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: $gray-50;
+        border: 1px solid $gray-200;
+        border-radius: $radius-md;
+        padding: 14px 16px;
+        transition: $transition-fast;
+
+        &--green {
+            &:hover {
+                background: $green-light;
+                border-color: lighten($green, 40%);
+            }
+        }
+
+        &--blue {
+            &:hover {
+                background: $blue-light;
+                border-color: lighten($blue, 30%);
+            }
+        }
+
+        &--yellow {
+            &:hover {
+                background: $yellow-light;
+                border-color: lighten($yellow, 20%);
+            }
+        }
+
+        strong {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: $text;
+            margin-bottom: 3px;
+        }
+
+        span {
+            display: block;
+            font-size: 0.8rem;
+            color: $gray-600;
+            line-height: 1.5;
+        }
+    }
+
+    &__featureIcon {
+        width: 38px;
+        height: 38px;
+        border-radius: $radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+
+        .tech__feature--green & {
+            background: $green-light;
+            color: $green;
+        }
+
+        .tech__feature--blue & {
+            background: $blue-light;
+            color: $blue;
+        }
+
+        .tech__feature--yellow & {
+            background: $yellow-light;
+            color: darken($yellow, 20%);
+        }
+    }
+
+    &__card {
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-xl;
+        padding: 28px 24px;
+        box-shadow: $shadow-sm;
+        transition: $transition;
+        height: 100%;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: $shadow-md;
+        }
+
+        &--green {
+            &:hover {
+                border-color: lighten($green, 40%);
+            }
+        }
+
+        &--blue {
+            &:hover {
+                border-color: lighten($blue, 30%);
+            }
+        }
+
+        &--yellow {
+            &:hover {
+                border-color: lighten($yellow, 20%);
+            }
+        }
+    }
+
+    &__cardIcon {
+        font-size: 1.8rem;
+        margin-bottom: 14px;
+
+        .tech__card--green & {
+            color: $green;
+        }
+
+        .tech__card--blue & {
+            color: $blue;
+        }
+
+        .tech__card--yellow & {
+            color: darken($yellow, 18%);
+        }
+    }
+
+    &__cardTitle {
+        font-family: $font-display;
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: $text;
+        margin-bottom: 8px;
+    }
+
+    &__cardDesc {
+        font-size: 0.85rem;
+        color: $gray-600;
+        line-height: 1.65;
+        margin: 0;
+    }
+}
+
+// ── Dashboard Preview ─────────────────────────────────────────────────────
+.dashPreview {
     display: flex;
-    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+
+    @media (max-width: $sm) {
+        flex-direction: column;
+    }
+}
+
+.dashPreview__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: $gray-50;
+    border-bottom: 1px solid $gray-200;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: $gray-800;
+    margin-bottom: 20px;
+}
+
+.dashPreview__dots {
+    display: flex;
+    gap: 5px;
 
     span {
-        background: #d1fae5;
-        color: $primary;
-        padding: 8px 14px;
-        border-radius: 30px;
-    }
-}
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: $gray-200;
 
-.cardStats {
-    margin-top: 40px;
-    display: grid;
-    gap: 20px;
+        &:nth-child(1) {
+            background: #ff5f56;
+        }
 
-    strong {
-        display: block;
-        font-size: 34px;
-        color: $primary;
-    }
-}
+        &:nth-child(2) {
+            background: #ffbd2e;
+        }
 
-.heading {
-    text-align: center;
-    margin-bottom: 40px;
-
-    h2 {
-        font-size: 42px;
-        margin-top: 15px;
-        font-weight: 700;
-
-        @media(max-width:$xl) {
-
-            font-size: 34px;
-
+        &:nth-child(3) {
+            background: #27c93f;
         }
     }
 }
 
-.valueGrid,
-.impactGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-
-    @media (max-width: $xl) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: $lg) {
-        grid-template-columns: 1fr;
-    }
+.dashPreview__title {
+    flex: 1;
 }
 
-.valueCard,
-.impactCard {
-    background: white;
-    border-radius: 24px;
-    padding: 35px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .04);
-
-    h3 {
-        margin: 20px 0 12px;
-    }
-
-    p {
-        color: #6b7280;
-        line-height: 1.8;
-    }
-}
-
-.icon {
-    width: 70px;
-    height: 70px;
-    background: rgba(15, 138, 75, .1);
-    color: $primary;
-    border-radius: 18px;
+.dashPreview__live {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 28px;
+    gap: 5px;
+    font-size: 0.7rem;
+    color: #22c55e;
+    font-weight: 700;
 }
 
-.challengeCards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+.dashPreview__body {
+    flex: 1;
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-xl;
+    overflow: hidden;
+    box-shadow: $shadow-lg;
+}
 
-    div {
-        background: #f7f8f6;
-        padding: 30px;
-        border-radius: 20px;
+.dashPreview__kpis {
+    display: flex;
+    gap: 1px;
+    background: $gray-200;
+    border-bottom: 1px solid $gray-200;
+}
+
+.dashKpi {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px;
+    background: $white;
+
+    &__icon {
+        font-size: 1rem;
+    }
+
+    &__value {
+        font-family: $font-display;
+        font-size: 1rem;
+        font-weight: 800;
+        color: $text;
+        line-height: 1;
+    }
+
+    &__label {
+        font-size: 0.65rem;
+        color: $gray-400;
+    }
+
+    &--green .dashKpi__icon {
+        color: $green;
+    }
+
+    &--yellow .dashKpi__icon {
+        color: darken($yellow, 18%);
+    }
+
+    &--blue .dashKpi__icon {
+        color: $blue;
+    }
+}
+
+.dashChart {
+    padding: 16px;
+    border-bottom: 1px solid $gray-100;
+
+    &__title {
+        font-size: 0.72rem;
+        color: $gray-400;
         font-weight: 600;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &__bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 6px;
+        height: 70px;
+    }
+
+    &__barWrap {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        height: 100%;
+        justify-content: flex-end;
+    }
+
+    &__bar {
+        width: 100%;
+        background: linear-gradient(180deg, $green, lighten($green, 20%));
+        border-radius: 3px 3px 0 0;
+        transition: height 1s ease;
+    }
+
+    &__day {
+        font-size: 0.6rem;
+        color: $gray-400;
     }
 }
 
-.impactCard {
-    text-align: center;
+.dashStatus {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 12px 16px;
+    border-bottom: 1px solid $gray-100;
 
-    h3 {
-        color: $primary;
-        font-size: 42px;
+    &__chip {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.68rem;
+        color: $gray-600;
+        background: $gray-50;
+        border: 1px solid $gray-200;
+        border-radius: $radius-full;
+        padding: 4px 10px;
+    }
+
+    &__icon {
+        color: #22c55e;
+        font-size: 0.7rem;
+    }
+}
+
+.dashNotif {
+    padding: 12px 16px;
+    background: $yellow-light;
+    font-size: 0.78rem;
+    color: darken($yellow, 30%);
+    font-weight: 500;
+    border-top: 1px solid lighten($yellow, 28%);
+}
+
+// Phone mock
+.dashPhone {
+    width: 130px;
+    flex-shrink: 0;
+
+    @media (max-width: $sm) {
+        width: 100%;
+    }
+
+    &__screen {
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: 20px;
+        padding: 16px 14px;
+        box-shadow: $shadow-md;
+        text-align: center;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        font-size: 0.7rem;
+        color: $gray-400;
+        font-weight: 600;
+        margin-bottom: 12px;
+
+        svg {
+            color: $green;
+        }
+    }
+
+    &__value {
+        font-family: $font-display;
+        font-size: 1.1rem;
+        font-weight: 900;
+        color: $green;
+    }
+
+    &__label {
+        font-size: 0.6rem;
+        color: $gray-400;
+        margin-bottom: 12px;
+        line-height: 1.3;
+    }
+
+    &__bar {
+        height: 5px;
+        background: $gray-100;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 12px;
+    }
+
+    &__barFill {
+        height: 100%;
+        width: 72%;
+        background: $green;
+        border-radius: 3px;
+    }
+
+    &__stats {
+        display: flex;
+        justify-content: space-around;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        strong {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: $text;
+        }
+
+        span {
+            font-size: 0.58rem;
+            color: $gray-400;
+        }
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 7 — COMMUNITY
+// ══════════════════════════════════════════════════════════════════════════
+.community {
+    padding: 80px 0;
+    background: $gray-50;
+    border-top: 1px solid $gray-200;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+
+    &__card {
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-xl;
+        padding: 32px 24px;
+        text-align: center;
+        box-shadow: $shadow-sm;
+        transition: $transition;
+        height: 100%;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: $shadow-md;
+            border-color: lighten($green, 40%);
+        }
+    }
+
+    &__cardIcon {
+        font-size: 2.2rem;
+        color: $green;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    &__cardValue {
+        font-family: $font-display;
+        font-size: 2.4rem;
+        font-weight: 900;
+        color: $green;
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    &__cardTag {
+        background: $green-light !important;
+        color: $green !important;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        border-radius: $radius-full;
+        padding: 4px 12px;
+        margin-bottom: 12px;
+    }
+
+    &__cardTitle {
+        font-family: $font-display;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: $text;
+        margin-bottom: 8px;
+    }
+
+    &__cardDesc {
+        font-size: 0.85rem;
+        color: $gray-600;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    // Sustainability pledge
+    &__pledge {
+        position: relative;
+        background: linear-gradient(135deg, $green, darken($green, 12%));
+        border-radius: $radius-xl;
+        padding: 36px 40px;
+        overflow: hidden;
+        margin-top: 0.5rem;
+
+        @media (max-width: $md) {
+            padding: 28px 24px;
+        }
+    }
+
+    &__pledgeBg {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 32px 32px;
+        pointer-events: none;
+    }
+
+    &__pledgeContent {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    &__pledgeLeft {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        flex: 1;
+        min-width: 260px;
+    }
+
+    &__pledgeLeaf {
+        font-size: 2.5rem;
+        color: $yellow;
+        flex-shrink: 0;
+        margin-top: 4px;
+    }
+
+    &__pledgeTitle {
+        font-family: $font-display;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: $white;
+        margin-bottom: 6px;
+    }
+
+    &__pledgeDesc {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.75);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    &__pledgeStats {
+        display: flex;
+        gap: 28px;
+        flex-wrap: wrap;
+    }
+
+    &__pledgeStat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        strong {
+            font-family: $font-display;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: $yellow;
+            line-height: 1;
+        }
+
+        span {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 4px;
+        }
+    }
+
+    // Testimonial strip
+    &__testimonials {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 2rem;
+
+        @media (max-width: $md) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__testimonial {
+        background: $white;
+        border: 2px solid $gray-200;
+        border-radius: $radius-xl;
+        padding: 24px 20px;
+        cursor: pointer;
+        transition: $transition;
+        opacity: 0.65;
+
+        &--active {
+            opacity: 1;
+            border-color: $green;
+            box-shadow: $shadow-md;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+
+        p {
+            font-size: 0.88rem;
+            color: $gray-600;
+            line-height: 1.65;
+            margin: 10px 0 14px;
+        }
+    }
+
+    &__testimonialStars {
+        display: flex;
+        gap: 3px;
+        color: $yellow;
+        font-size: 0.75rem;
+    }
+
+    &__testimonialAuthor {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.82rem;
+        color: $gray-600;
+
+        strong {
+            color: $text;
+        }
+    }
+
+    &__testimonialAvatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: $green;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 800;
+        flex-shrink: 0;
     }
 }
 
 
 
-
+// ── Responsive ────────────────────────────────────────────────────────────
 @media (max-width: $lg) {
-
-    .heroContent h1,
-    .missionGrid h2,
-    .challengeGrid h2,
-    .heading h2,
-    .visionSection h2,
-    .ctaSection h2 {
-        font-size: 42px;
+    .hero {
+        padding: 110px 0 60px;
     }
 
-    .missionGrid,
-    .challengeGrid,
-    .heroStats {
-        grid-template-columns: 1fr;
+    .hero__visual {
+        margin-top: 1rem;
+    }
+
+    .hero__floatCard1,
+    .hero__floatCard2 {
+        display: none;
+    }
+
+    .dashPreview {
+        flex-direction: column;
+    }
+
+    .dashPhone {
+        width: 100%;
     }
 }
 
-@media (max-width: $md) {
-    .heroContent h1 {
-        font-size: 34px;
+@media (max-width: $sm) {
+    .hero__trust {
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .heading h2,
-    .missionGrid h2,
-    .challengeGrid h2,
-    .visionSection h2,
-    .ctaSection h2 {
-        font-size: 32px;
+    .hero__trustDivider {
+        width: 60px;
+        height: 1px;
+    }
+
+    .mission__card {
+        padding: 32px 20px;
+    }
+
+    .community__pledge {
+        padding: 24px 16px;
     }
 }

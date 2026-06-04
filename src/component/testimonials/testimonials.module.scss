@@ -1,0 +1,141 @@
+@use "../../styles/common" as *;
+@use "../../styles/var" as *;
+
+// ── Community Stories ─────────────────────────────────────────────────────
+.community {
+    padding: 80px 0;
+    background: $white;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.testimonialCard {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-xl;
+    padding: 28px 24px;
+    box-shadow: $shadow-sm;
+    transition: $transition;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '"';
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        font-size: 8rem;
+        color: $gray-100;
+        font-family: Georgia, serif;
+        line-height: 1;
+        pointer-events: none;
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-md;
+
+        &.testimonialCard--green {
+            border-color: lighten($green, 40%);
+        }
+
+        &.testimonialCard--yellow {
+            border-color: lighten($yellow, 20%);
+        }
+
+        &.testimonialCard--blue {
+            border-color: lighten($blue, 30%);
+        }
+    }
+
+    &__stars {
+        display: flex;
+        gap: 3px;
+        color: $yellow;
+        font-size: 0.85rem;
+    }
+
+    &__quote {
+        font-size: 0.9rem;
+        color: $gray-600;
+        line-height: 1.7;
+        flex: 1;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: auto;
+
+        strong {
+            display: block;
+            font-size: 0.9rem;
+            color: $text;
+        }
+
+        span {
+            display: block;
+            font-size: 0.75rem;
+            color: $gray-400;
+        }
+    }
+
+    &__avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.85rem;
+        color: $white;
+        flex-shrink: 0;
+
+        &--green {
+            background: $green;
+        }
+
+        &--yellow {
+            background: $yellow;
+            color: $text;
+        }
+
+        &--blue {
+            background: $blue;
+        }
+    }
+
+    &__stats {
+        display: flex;
+        gap: 14px;
+        padding-top: 12px;
+        border-top: 1px solid $gray-100;
+        font-size: 0.78rem;
+        color: $gray-600;
+        font-weight: 600;
+
+        span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            svg {
+                color: $green;
+            }
+        }
+    }
+}

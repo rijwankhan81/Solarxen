@@ -38,6 +38,10 @@
                 width: 80px;
                 height: auto;
 
+                @media(max-width:$xl) {
+                    width: 60px;
+                }
+
                 @media(max-width:$md) {
                     width: 50px;
                 }
@@ -75,12 +79,12 @@
 
                 .navLink {
                     text-decoration: none;
-                    color: $color_three;
+                    color: $gray-600;
                     font-weight: 400;
                 }
 
                 .active {
-                    color: $secondary;
+                    color: $yellow;
                 }
             }
         }
@@ -108,7 +112,7 @@
             }
 
             .get {
-                background: $primary;
+                background: $green;
 
                 @media(max-width:$lg) {
                     display: none

@@ -3,10 +3,11 @@ import styles from "@/styles/Home.module.scss";
 import Header from "@/layout/header";
 import NextImage from "@/hooks/NextImage";
 import Footer from "@/layout/footer";
-import { Container } from "react-bootstrap";
+import { Badge, Button, Col, Container, Row } from "react-bootstrap";
 import { features } from "@/constants/features";
 import { processData } from "@/constants/processData";
 import Packages from "@/component/packages";
+import { FaArrowRight, FaPlay } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -17,69 +18,76 @@ export default function Home() {
       <Header />
       <main className={styles.main}>
         {/* HERO */}
-        <section className={styles.hero}>
-          <Container className={styles.container}>
-            <div className={styles.heroContent}>
-              <span className={styles.badge}>
-                Smart Energy Platform For Bangladesh
-              </span>
-
-              <h1>
-                Earn from Your <br />
-                <span>Rooftop</span> with Solarxen
-              </h1>
-
-              <p>
-                Install solar, generate power, and receive monthly income
-                through our smart energy platform.
-              </p>
-
-              <div className={styles.heroButtons}>
-                <button className={styles.primaryBtn}>
-                  Join Solarxen Network
-                </button>
-
-                <button className={styles.secondaryBtn}>
-                  Explore Solar Packages
-                </button>
-              </div>
-
-              <div className={styles.stats}>
-                <div>
-                  <h3>500+</h3>
-                  <p>Active Roofs</p>
+        <section className={styles.hero} id="hero">
+          <div className={styles.hero__bg}>
+            <div className={styles.hero__bgGrid} />
+            <div className={styles.hero__bgGlow1} />
+            <div className={styles.hero__bgGlow2} />
+          </div>
+          <Container>
+            <Row className="align-items-center g-5">
+              <Col lg={6} className={styles.hero__content}>
+                <Badge className={styles.hero__badge}>
+                  <span className={styles.liveDot} /> Smart Energy Platform For
+                  Bangladesh
+                </Badge>
+                <h1 className={styles.hero__headline}>
+                  Earn from Your{" "}
+                  <span className={styles.hero__headlineAccent}>Rooftop</span>{" "}
+                  with Solarxen
+                </h1>
+                <p className={styles.hero__sub}>
+                  Install solar, generate power, and receive monthly income
+                  through our smart energy platform.
+                </p>
+                <div className={styles.hero__actions}>
+                  <Button className={styles.btn__primary}>
+                    Join the Network <FaArrowRight />
+                  </Button>
+                  <Button className={styles.btn__outline}>
+                    <FaPlay /> Explore Packages
+                  </Button>
                 </div>
+                <div className={styles.hero__quickStats}>
+                  <div className={styles.hero__qs}>
+                    <strong>847+</strong>
+                    <span>Rooftops</span>
+                  </div>
 
-                <div>
-                  <h3>৳12M+</h3>
-                  <p>Monthly Payouts</p>
+                  <div className={styles.hero__qsDivider} />
+                  <div className={styles.hero__qs}>
+                    <strong>3.2 kW</strong>
+                    <span>Live Generation</span>
+                  </div>
+                  <div className={styles.hero__qsDivider} />
+                  <div className={styles.hero__qs}>
+                    <strong>৳12L+</strong>
+                    <span>Earned</span>
+                  </div>
                 </div>
+              </Col>
 
-                <div>
-                  <h3>3.2 kW</h3>
-                  <p>Live Generation</p>
+              <Col lg={6} className={styles.hero__visual}>
+                <div className={styles.heroImage}>
+                  <NextImage
+                    src="/images/hm-bn.jpg"
+                    alt="Solar House"
+                    className={styles.image}
+                  />
+
+                  <div className={styles.floatingCardTop}>
+                    <p>Monthly Earning</p>
+                    <h3>৳14,500</h3>
+                    <span>+12% this month</span>
+                  </div>
+
+                  <div className={styles.floatingCardBottom}>
+                    <p>Live Generation</p>
+                    <h3>3.2 kW</h3>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <div className={styles.heroImage}>
-              <NextImage
-                src="/images/hm-bn.jpg"
-                alt="Solar House"
-                className={styles.image}
-              />
-
-              <div className={styles.floatingCardTop}>
-                <p>Monthly Earning</p>
-                <h3>৳14,500</h3>
-                <span>+12% this month</span>
-              </div>
-
-              <div className={styles.floatingCardBottom}>
-                <p>Live Generation</p>
-                <h3>3.2 kW</h3>
-              </div>
-            </div>
+              </Col>
+            </Row>
           </Container>
         </section>
 
@@ -87,9 +95,9 @@ export default function Home() {
         <section className={styles.process}>
           <Container className={styles.container}>
             {" "}
-            <div className={styles.sectionHeading}>
-              <h2>How Solarxen Works</h2>
-              <p>
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.sectionTitle}>How Solarxen Works</h2>
+              <p className={styles.sectionSub}>
                 A simple, transparent process from installation to your first
                 monthly payout.
               </p>
@@ -113,10 +121,11 @@ export default function Home() {
         {/* DASHBOARD */}
         <section className={styles.dashboard}>
           <Container className={styles.container}>
-            <div className={styles.sectionHeading}>
-              <h2>Platform Impact Dashboard</h2>
-
-              <p>Real time statistics from the Solarxen community network.</p>
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.sectionTitle}>Platform Impact Dashboard</h2>
+              <p className={styles.sectionSub}>
+                Real time statistics from the Solarxen community network.
+              </p>
             </div>
             <div className={styles.dashboardStats}>
               <div className={styles.dashboardCard}>
@@ -156,25 +165,30 @@ export default function Home() {
         </section>
 
         {/* WHY US */}
+
         <section className={styles.whyUs}>
-          <Container className={styles.container}>
-            {" "}
-            <div className={styles.sectionHeading}>
-              <h2>Why Choose Solarxen?</h2>
-
-              <p>We make rooftop solar easy, profitable, and worry free.</p>
+          <Container>
+            <div className={styles.sectionHeader}>
+              <Badge className={styles.sectionBadge}>Benefits</Badge>
+              <h2 className={styles.sectionTitle}>Why Choose Solarxen?</h2>
+              <p className={styles.sectionSub}>
+                We make rooftop solar easy, profitable, and worry free.
+              </p>
             </div>
-            <div className={styles.featureGrid}>
-              {features.map((item, index) => (
-                <div className={styles.featureCard} key={index}>
-                  <div className={styles.featureIcon}>{item.icon}</div>
-
-                  <h3>{item.title}</h3>
-
-                  <p>{item.desc}</p>
-                </div>
+            <Row className="g-4">
+              {features.map((f, i) => (
+                <Col key={i} xs={12} sm={6} lg={4} xl={3}>
+                  <div className={styles.featureCard}>
+                    <div className={styles.featureCard__icon}>{f.icon}</div>
+                    <h4 className={styles.featureCard__title}>{f.title}</h4>
+                    <p className={styles.featureCard__desc}>{f.desc}</p>
+                    <div className={styles.featureCard__arrow}>
+                      <FaArrowRight />
+                    </div>
+                  </div>
+                </Col>
               ))}
-            </div>{" "}
+            </Row>
           </Container>
         </section>
       </main>
