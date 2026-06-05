@@ -7,5 +7,5 @@ export type ContactInfo = {
 export const contactInfo: ContactInfo = {
   phone: "+880 1234 567890",
   email: "hello@solarxen.com",
-  address: "Gulshan 2, Dhaka, Bangladesh",
+  address: "House 12, Road 4, Block C Bashundhara R/A, Dhaka 1229",
 };

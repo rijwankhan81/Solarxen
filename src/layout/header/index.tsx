@@ -73,7 +73,7 @@ export default function Header() {
                   </a>
                 </div>
                 <div className={styles.btn}>
-                  <a className={styles.get} href="/book">
+                  <a className={styles.get} href="/contact">
                     Get Started
                   </a>
                 </div>

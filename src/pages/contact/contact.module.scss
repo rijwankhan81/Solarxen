@@ -1,0 +1,800 @@
+@use '../../styles/var' as *;
+@use "../../styles/common" as *;
+
+// ── HERO ─────────────────────────────────────────────────────────────────────
+.hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #062b18 0%, #0B6B3A 55%, #1a5c2e 100%);
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse 60% 70% at 80% 50%, rgba(249, 178, 51, 0.08) 0%, transparent 70%),
+            radial-gradient(ellipse 40% 40% at 10% 80%, rgba(11, 107, 58, 0.3) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+
+    &__grid {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none;
+    }
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    padding: 5rem 0 4rem;
+
+    @media (max-width: $md) {
+        padding: 3rem 0 2.5rem;
+        text-align: center;
+    }
+}
+
+.heroBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(249, 178, 51, 0.15) !important;
+    color: $yellow !important;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: $radius-full;
+    border: 1px solid rgba(249, 178, 51, 0.3);
+    margin-bottom: 1.25rem;
+}
+
+.heroTitle {
+    font-family: $font-display;
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 800;
+    color: $white;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+
+    span {
+        color: $yellow;
+        position: relative;
+    }
+}
+
+.heroSub {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.75;
+    max-width: 520px;
+    margin-bottom: 2.25rem;
+
+    @media (max-width: $md) {
+        margin: 0 auto 2rem;
+    }
+}
+
+.heroActions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    @media (max-width: $md) {
+        justify-content: center;
+    }
+}
+
+.btnHeroOutline {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    background: transparent !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    color: $white !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 13px 28px;
+    border-radius: $radius-full;
+    transition: $transition;
+
+    &:hover {
+        border-color: $white !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        transform: translateY(-2px);
+    }
+}
+
+.heroVisual {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 0;
+
+    @media (max-width: $lg) {
+        padding: 2rem 0 0;
+    }
+}
+
+.heroCard {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: $radius-lg;
+    padding: 1.75rem;
+    color: $white;
+}
+
+.heroCardTitle {
+    font-family: $font-display;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    span {
+        background: rgba(249, 178, 51, 0.2);
+        color: $yellow;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+    }
+}
+
+.heroStat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .label {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .val {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: $yellow;
+    }
+}
+
+.heroFloatBadge {
+    position: absolute;
+    top: 1.5rem;
+    right: -1rem;
+    background: $yellow;
+    color: $text;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: $radius-full;
+    box-shadow: 0 4px 16px rgba(249, 178, 51, 0.4);
+    white-space: nowrap;
+    z-index: 3;
+
+    @media (max-width: $md) {
+        display: none;
+    }
+}
+
+// ── QUICK CONTACT ─────────────────────────────────────────────────────────────
+.quickContact {
+    padding: 5rem 0;
+    background: $gray-50;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.contactCard {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-md;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: $transition;
+    height: 100%;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: $shadow-lg;
+        border-color: $green;
+
+        .contactCardIcon {
+            background: $green;
+            color: $white;
+        }
+    }
+}
+
+.contactCardIcon {
+    width: 64px;
+    height: 64px;
+    background: $green-light;
+    color: $green;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 1.25rem;
+    transition: $transition;
+}
+
+.contactCardTitle {
+    font-family: $font-display;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: $text;
+    margin-bottom: 0.4rem;
+}
+
+.contactCardSub {
+    font-size: 0.85rem;
+    color: $gray-600;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.contactCardLink {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: $green;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: $transition-fast;
+
+    &:hover {
+        gap: 8px;
+        color: $green-mid;
+    }
+}
+
+// ── FORM ──────────────────────────────────────────────────────────────────────
+.formSection {
+    padding: 5rem 0;
+    background: $white;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.formWrap {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-lg;
+    padding: 3rem;
+    box-shadow: $shadow-md;
+
+    @media (max-width: $md) {
+        padding: 2rem 1.25rem;
+    }
+}
+
+.formLabel {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: $text;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+
+.formControl {
+    background: $gray-50 !important;
+    border: 1.5px solid $gray-200 !important;
+    border-radius: $radius-sm !important;
+    padding: 13px 16px !important;
+    font-size: 0.95rem !important;
+    color: $text !important;
+    transition: $transition-fast !important;
+    font-family: $font-body !important;
+
+    &:focus {
+        border-color: $green !important;
+        box-shadow: 0 0 0 3px rgba(11, 107, 58, 0.1) !important;
+        background: $white !important;
+    }
+
+    &::placeholder {
+        color: $gray-400 !important;
+    }
+}
+
+.formSelect {
+    @extend .formControl;
+    cursor: pointer;
+}
+
+.formSideInfo {
+    background: linear-gradient(160deg, #062b18 0%, #0B6B3A 100%);
+    border-radius: $radius-lg;
+    padding: 2.5rem;
+    height: 100%;
+    color: $white;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 80% 20%, rgba(249, 178, 51, 0.12), transparent 60%);
+        pointer-events: none;
+    }
+}
+
+.formSideTitle {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: $white;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.formSideList {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+
+    li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.5;
+
+        span.icon {
+            background: rgba(249, 178, 51, 0.2);
+            color: $yellow;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        strong {
+            display: block;
+            color: $white;
+            font-weight: 700;
+            margin-bottom: 1px;
+        }
+    }
+}
+
+// ── WHY CONTACT ───────────────────────────────────────────────────────────────
+.whySection {
+    padding: 5rem 0;
+    background: $green-light;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.whyCard {
+    background: $white;
+    border-radius: $radius-md;
+    padding: 2rem 1.5rem;
+    height: 100%;
+    border: 1px solid rgba(11, 107, 58, 0.1);
+    transition: $transition;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-md;
+    }
+}
+
+.whyIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+
+    &--green {
+        background: $green-light;
+        color: $green;
+    }
+
+    &--yellow {
+        background: $yellow-light;
+        color: darken($yellow, 10%);
+    }
+
+    &--blue {
+        background: $blue-light;
+        color: $blue;
+    }
+}
+
+.whyTitle {
+    font-family: $font-display;
+    font-size: 1rem;
+    font-weight: 700;
+    color: $text;
+    margin-bottom: 0.4rem;
+}
+
+.whyDesc {
+    font-size: 0.875rem;
+    color: $gray-600;
+    line-height: 1.6;
+}
+
+// ── COVERAGE ──────────────────────────────────────────────────────────────────
+.coverageSection {
+    padding: 5rem 0;
+    background: $white;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.mapWrap {
+    background: $green-light;
+    border: 2px solid $gray-200;
+    border-radius: $radius-lg;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.mapSvg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cityChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: $radius-full;
+    margin: 4px;
+
+    &--active {
+        background: $green-light;
+        color: $green;
+        border: 1px solid rgba(11, 107, 58, 0.2);
+    }
+
+    &--upcoming {
+        background: $yellow-light;
+        color: darken($yellow, 15%);
+        border: 1px solid rgba(249, 178, 51, 0.3);
+    }
+}
+
+// ── OFFICE ────────────────────────────────────────────────────────────────────
+.officeSection {
+    padding: 5rem 0;
+    background: $gray-50;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.officeCard {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-lg;
+    padding: 2.5rem;
+    height: 100%;
+    box-shadow: $shadow-sm;
+}
+
+.officeInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.officeInfoRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    .iconBox {
+        width: 42px;
+        height: 42px;
+        background: $green-light;
+        color: $green;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    .infoText {
+        .infoLabel {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: $gray-400;
+            margin-bottom: 2px;
+        }
+
+        .infoVal {
+            font-size: 0.9rem;
+            color: $text;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+    }
+}
+
+.mapEmbed {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    border: 1px solid $gray-200;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        min-height: 350px;
+    }
+}
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+.faqSection {
+    padding: 5rem 0;
+    background: $white;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.faqItem {
+    border: 1.5px solid $gray-200;
+    border-radius: $radius-md;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    transition: $transition-fast;
+
+    &.open {
+        border-color: $green;
+        box-shadow: $shadow-sm;
+    }
+}
+
+.faqQuestion {
+    width: 100%;
+    background: $white;
+    border: none;
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: $font-body;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: $text;
+    cursor: pointer;
+    text-align: left;
+    transition: $transition-fast;
+
+    &:hover {
+        background: $gray-50;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    .faqIcon {
+        width: 28px;
+        height: 28px;
+        background: $green-light;
+        color: $green;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 0.9rem;
+        transition: $transition-fast;
+    }
+
+    &.open .faqIcon {
+        background: $green;
+        color: $white;
+        transform: rotate(180deg);
+    }
+}
+
+.faqAnswer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    background: $gray-50;
+
+    &.open {
+        max-height: 300px;
+    }
+
+    p {
+        padding: 1rem 1.5rem 1.25rem;
+        font-size: 0.9rem;
+        color: $gray-600;
+        line-height: 1.7;
+        margin: 0;
+    }
+}
+
+// ── PARTNERSHIP ───────────────────────────────────────────────────────────────
+.partnerSection {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #062b18 0%, #0B6B3A 100%);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse 50% 80% at 90% 50%, rgba(249, 178, 51, 0.08), transparent 60%),
+            radial-gradient(ellipse 30% 50% at 5% 20%, rgba(255, 255, 255, 0.04), transparent 50%);
+        pointer-events: none;
+    }
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.partnerCard {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: $radius-md;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    height: 100%;
+    transition: $transition;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateY(-4px);
+        border-color: rgba(249, 178, 51, 0.35);
+    }
+}
+
+.partnerIcon {
+    width: 56px;
+    height: 56px;
+    background: rgba(249, 178, 51, 0.15);
+    color: $yellow;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin: 0 auto 1rem;
+}
+
+.partnerCardTitle {
+    font-family: $font-display;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: $white;
+    margin-bottom: 0.3rem;
+}
+
+.partnerCardDesc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+}
+
+.btnYellow {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    background: $yellow !important;
+    border-color: $yellow !important;
+    color: $text !important;
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 14px 32px;
+    border-radius: $radius-full;
+    transition: $transition;
+
+    &:hover {
+        background: darken($yellow, 8%) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(249, 178, 51, 0.35);
+    }
+}

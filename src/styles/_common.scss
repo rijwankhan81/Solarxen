@@ -26,6 +26,10 @@ body {
 .sectionHeader {
     text-align: center;
     margin-bottom: 3rem;
+
+    @media(max-width:$md) {
+        margin-bottom: 2rem;
+    }
 }
 
 .sectionBadge {
