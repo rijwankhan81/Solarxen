@@ -1,0 +1,748 @@
+@use "../../styles/var" as *;
+@use "../../styles/common" as *;
+
+
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 1 — HERO
+// ══════════════════════════════════════════════════════════════════════════
+.hero {
+    position: relative;
+    padding: 80px 0 72px;
+    overflow: hidden;
+    background: $white;
+
+    &__bgGrid {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(11, 107, 58, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(11, 107, 58, 0.035) 1px, transparent 1px);
+        background-size: 44px 44px;
+        pointer-events: none;
+    }
+
+    &__bgGlow1 {
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(circle, rgba(249, 178, 51, 0.1), transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    &__bgGlow2 {
+        position: absolute;
+        bottom: -80px;
+        left: -80px;
+        width: 360px;
+        height: 360px;
+        background: radial-gradient(circle, rgba(11, 107, 58, 0.07), transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    &__left {
+        position: relative;
+        z-index: 1;
+        animation: fadeUp 0.75s ease both;
+    }
+
+    &__headline {
+        font-family: $font-display;
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        font-weight: 900;
+        line-height: 1.1;
+        color: $text;
+        margin-bottom: 1.25rem;
+    }
+
+    &__accent {
+        color: $green;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, $green, $yellow);
+            border-radius: 2px;
+        }
+    }
+
+    &__sub {
+        font-size: 1.1rem;
+        color: $gray-600;
+        line-height: 1.75;
+        max-width: 520px;
+        margin-bottom: 1.75rem;
+    }
+
+    &__meta {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 2rem;
+    }
+
+    &__metaItem {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: $gray-600;
+        font-weight: 500;
+    }
+
+    &__metaIcon {
+        color: $green;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ── Newsroom Visual ────────────────────────────────────────────────────────
+.newsroomViz {
+    position: relative;
+    display: flex;
+    gap: 14px;
+    animation: fadeUp 0.75s 0.15s ease both;
+
+    @media (max-width: $md) {
+        flex-direction: column;
+    }
+
+    &__main {
+        flex: 1;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-xl;
+        overflow: hidden;
+        box-shadow: $shadow-lg;
+    }
+
+    &__imgArea {
+        position: relative;
+    }
+
+    &__imgSvg {
+        width: 100%;
+        display: block;
+    }
+
+    &__meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-top: 1px solid $gray-100;
+        background: $gray-50;
+    }
+
+    &__tag {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: $green;
+    }
+
+    &__date {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.72rem;
+        color: $gray-400;
+    }
+
+    &__side {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 140px;
+        flex-shrink: 0;
+
+        @media (max-width: $md) {
+            flex-direction: row;
+            width: 100%;
+        }
+    }
+
+    &__sideCard {
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-md;
+        padding: 14px 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: $shadow-sm;
+        transition: $transition-fast;
+        flex: 1;
+
+        &:hover {
+            border-color: lighten($green, 40%);
+            background: $green-light;
+        }
+
+        strong {
+            display: block;
+            font-size: 0.8rem;
+            color: $text;
+            font-weight: 700;
+        }
+
+        span {
+            display: block;
+            font-size: 0.7rem;
+            color: $gray-400;
+        }
+    }
+
+    &__sideIcon {
+        font-size: 1.4rem;
+        flex-shrink: 0;
+    }
+
+    // Floating badges
+    &__float1 {
+        position: absolute;
+        top: -14px;
+        left: -14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 10px 14px;
+        box-shadow: $shadow-md;
+        animation: floatY 3s ease-in-out infinite;
+        font-size: 0.9rem;
+        z-index: 2;
+
+        svg {
+            color: $green;
+            font-size: 1rem;
+        }
+
+        strong {
+            display: block;
+            font-weight: 800;
+            color: $green;
+            font-size: 0.95rem;
+        }
+
+        span {
+            display: block;
+            font-size: 0.68rem;
+            color: $gray-400;
+        }
+    }
+
+    &__float2 {
+        position: absolute;
+        bottom: 30px;
+        left: -14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 10px 14px;
+        box-shadow: $shadow-md;
+        animation: floatY 3.5s 0.5s ease-in-out infinite;
+        font-size: 0.9rem;
+        z-index: 2;
+
+        svg {
+            color: $yellow;
+            font-size: 1rem;
+        }
+
+        strong {
+            display: block;
+            font-weight: 800;
+            color: $text;
+            font-size: 0.95rem;
+        }
+
+        span {
+            display: block;
+            font-size: 0.68rem;
+            color: $gray-400;
+        }
+    }
+}
+
+@keyframes floatY {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 2 — PRESS RELEASES
+// ══════════════════════════════════════════════════════════════════════════
+.releases {
+    padding: 80px 0;
+    background: $gray-50;
+    border-top: 1px solid $gray-200;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+
+    &__empty {
+        text-align: center;
+        padding: 60px 20px;
+        color: $gray-400;
+        font-size: 1rem;
+
+        svg {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+            margin-inline: auto;
+        }
+    }
+
+    &__loadMore {
+        text-align: center;
+        margin-top: 2.5rem;
+    }
+}
+
+// Filter bar
+.filterBar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+
+    &__icon {
+        color: $gray-400;
+        font-size: 0.9rem;
+    }
+
+    &__pills {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+}
+
+.filterPill {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 18px;
+    border-radius: $radius-full;
+    background: $white;
+    border: 1.5px solid $gray-200;
+    color: $gray-600;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover {
+        border-color: $green;
+        color: $green;
+        background: $green-light;
+    }
+
+    &--active {
+        background: $green !important;
+        border-color: $green !important;
+        color: $white !important;
+    }
+}
+
+// Press release card
+.prCard {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-xl;
+    padding: 24px;
+    box-shadow: $shadow-sm;
+    transition: $transition;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: $radius-xl $radius-xl 0 0;
+    }
+
+    &--green::before {
+        background: $green;
+    }
+
+    &--yellow::before {
+        background: $yellow;
+    }
+
+    &--blue::before {
+        background: $blue;
+    }
+
+    &--teal::before {
+        background: linear-gradient(90deg, $green, $blue);
+    }
+
+    &--leaf::before {
+        background: linear-gradient(90deg, #22c55e, $green);
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-md;
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    &__date {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75rem;
+        color: $gray-400;
+        font-weight: 500;
+
+        svg {
+            color: $green;
+            font-size: 0.7rem;
+        }
+    }
+
+    &__cat {
+        font-size: 0.66rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+        padding: 4px 10px !important;
+        border-radius: $radius-full !important;
+
+        &--green {
+            background: $green-light !important;
+            color: $green !important;
+        }
+
+        &--yellow {
+            background: $yellow-light !important;
+            color: darken($yellow, 22%) !important;
+        }
+
+        &--blue {
+            background: $blue-light !important;
+            color: darken($blue, 10%) !important;
+        }
+
+        &--teal {
+            background: rgba(30, 136, 229, 0.08) !important;
+            color: $blue !important;
+        }
+
+        &--leaf {
+            background: rgba(34, 197, 94, 0.1) !important;
+            color: #15803d !important;
+        }
+    }
+
+    &__headline {
+        font-family: $font-display;
+        font-size: 1rem;
+        font-weight: 800;
+        color: $text;
+        line-height: 1.35;
+        margin: 0;
+        flex: 1;
+    }
+
+    &__summary {
+        font-size: 0.84rem;
+        color: $gray-600;
+        line-height: 1.65;
+        margin: 0;
+        flex: 1;
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 12px;
+        border-top: 1px solid $gray-100;
+        margin-top: auto;
+    }
+
+    &__readMore {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: $green;
+        text-decoration: none;
+        transition: $transition-fast;
+
+        &:hover {
+            gap: 10px;
+            color: darken($green, 10%);
+        }
+    }
+
+    &__pdf {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: $gray-50;
+        border: 1px solid $gray-200;
+        color: $gray-400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        text-decoration: none;
+        transition: $transition-fast;
+
+        &:hover {
+            background: $green-light;
+            color: $green;
+            border-color: lighten($green, 40%);
+        }
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 3 — COMPANY SNAPSHOT
+// ══════════════════════════════════════════════════════════════════════════
+.snapshot {
+    padding: 80px 0;
+    background: $gray-100;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+.snapshotGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 2rem;
+
+    @media (max-width: $xl) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: $lg) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $sm) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.snapshotCard {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-lg;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: $shadow-sm;
+    transition: $transition;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: $radius-lg $radius-lg 0 0;
+    }
+
+    &--green::before {
+        background: $green;
+    }
+
+    &--yellow::before {
+        background: $yellow;
+    }
+
+    &--blue::before {
+        background: $blue;
+    }
+
+    &--leaf::before {
+        background: linear-gradient(90deg, $green, $blue);
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-md;
+    }
+
+    &__icon {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        display: block;
+
+        .snapshotCard--green & {
+            color: $green;
+        }
+
+        .snapshotCard--yellow & {
+            color: darken($yellow, 18%);
+        }
+
+        .snapshotCard--blue & {
+            color: $blue;
+        }
+
+        .snapshotCard--leaf & {
+            color: $green;
+        }
+    }
+
+    &__value {
+        font-family: $font-display;
+        font-size: 1.7rem;
+        font-weight: 900;
+        color: $text;
+        line-height: 1;
+        margin-bottom: 6px;
+    }
+
+    &__label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: $gray-800;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 5px;
+    }
+
+    &__sub {
+        font-size: 0.72rem;
+        color: $gray-400;
+        line-height: 1.4;
+    }
+}
+
+
+
+// ── Responsive ────────────────────────────────────────────────────────────
+@media (max-width: $lg) {
+
+    .newsroomViz__float1,
+    .newsroomViz__float2 {
+        display: none;
+    }
+
+    .featuredCard {
+        grid-template-columns: 1fr;
+    }
+
+    .snapshotGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: $md) {
+    .hero {
+        padding: 60px 0 56px;
+    }
+
+    .featuredCard__content {
+        padding: 24px 20px;
+    }
+
+    .snapshot__strip {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .snapshot__stripLeft {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .filterBar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: $sm) {
+    .snapshotGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero__headline {
+        font-size: 2.2rem;
+    }
+
+    .newsroomViz__side {
+        flex-direction: row;
+        width: 100%;
+    }
+}
