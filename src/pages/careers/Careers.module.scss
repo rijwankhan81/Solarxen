@@ -1,0 +1,1253 @@
+@use '../../styles/var' as *;
+@use "../../styles/common" as *;
+
+
+
+// ── Type badges ───────────────────────────────────────────────────────────
+.typeBadge {
+    font-size: 0.66rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    padding: 4px 10px !important;
+    border-radius: $radius-full !important;
+
+    &__green {
+        background: $green-light !important;
+        color: $green !important;
+    }
+
+    &__yellow {
+        background: $yellow-light !important;
+        color: darken($yellow, 22%) !important;
+    }
+
+    &__blue {
+        background: $blue-light !important;
+        color: darken($blue, 10%) !important;
+    }
+
+    &__teal {
+        background: rgba(30, 136, 229, 0.09) !important;
+        color: $blue !important;
+    }
+}
+
+// ── Level badges ──────────────────────────────────────────────────────────
+.levelBadge {
+    font-size: 0.63rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    padding: 3px 9px !important;
+    border-radius: $radius-full !important;
+    border: 1.5px solid transparent !important;
+
+    &__leaf {
+        background: rgba(34, 197, 94, 0.1) !important;
+        color: #15803d !important;
+        border-color: rgba(34, 197, 94, 0.25) !important;
+    }
+
+    &__blue {
+        background: $blue-light !important;
+        color: darken($blue, 10%) !important;
+        border-color: rgba(30, 136, 229, 0.2) !important;
+    }
+
+    &__yellow {
+        background: $yellow-light !important;
+        color: darken($yellow, 22%) !important;
+        border-color: rgba(249, 178, 51, 0.25) !important;
+    }
+
+    &__green {
+        background: $green-light !important;
+        color: $green !important;
+        border-color: rgba(11, 107, 58, 0.2) !important;
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 1 — HERO
+// ══════════════════════════════════════════════════════════════════════════
+.hero {
+    position: relative;
+    padding: 80px 0 72px;
+    overflow: hidden;
+    background: $white;
+
+    &__bgGrid {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(11, 107, 58, 0.034) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(11, 107, 58, 0.034) 1px, transparent 1px);
+        background-size: 44px 44px;
+        pointer-events: none;
+    }
+
+    &__bgGlow1 {
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(249, 178, 51, 0.1), transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    &__bgGlow2 {
+        position: absolute;
+        bottom: -80px;
+        left: -80px;
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(circle, rgba(11, 107, 58, 0.07), transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    &__left {
+        position: relative;
+        z-index: 1;
+        animation: fadeUp 0.7s ease both;
+    }
+
+    &__headline {
+        font-family: $font-display;
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        font-weight: 900;
+        line-height: 1.12;
+        color: $text;
+        margin-bottom: 1.25rem;
+    }
+
+    &__accent {
+        color: $green;
+    }
+
+    &__sub {
+        font-size: 1.08rem;
+        color: $gray-600;
+        line-height: 1.75;
+        max-width: 500px;
+        margin-bottom: 1.75rem;
+    }
+
+    &__culturePills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 2rem;
+    }
+
+    &__culturePill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: $green-light;
+        color: $green;
+        font-size: 0.84rem;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: $radius-full;
+        border: 1px solid rgba(11, 107, 58, 0.15);
+        transition: $transition-fast;
+
+        &:hover {
+            background: $green;
+            color: $white;
+        }
+
+        svg {
+            font-size: 0.82rem;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    // ── Right visual ──────────────────────────────────────────────────────
+    &__visual {
+        position: relative;
+        animation: fadeUp 0.7s 0.15s ease both;
+    }
+
+    &__card {
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-xl;
+        box-shadow: $shadow-lg;
+        overflow: hidden;
+    }
+
+    &__cardHeader {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 18px;
+        background: $gray-50;
+        border-bottom: 1px solid $gray-200;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: $gray-800;
+    }
+
+    &__cardLogo {
+        font-size: 1.3rem;
+        color: $green;
+    }
+
+    &__cardBadge {
+        margin-left: auto;
+        background: $green !important;
+        color: $white !important;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: $radius-full;
+    }
+
+    &__cardList {
+        padding: 8px 0;
+    }
+
+    &__cardJob {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 18px;
+        border-bottom: 1px solid $gray-100;
+        transition: $transition-fast;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background: $gray-50;
+        }
+
+        strong {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: $text;
+        }
+
+        span {
+            display: block;
+            font-size: 0.72rem;
+            color: $gray-400;
+            margin-top: 2px;
+        }
+    }
+
+    &__cardJobIcon {
+        width: 36px;
+        height: 36px;
+        border-radius: $radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+
+        &__green {
+            background: $green-light;
+            color: $green;
+        }
+
+        &__yellow {
+            background: $yellow-light;
+            color: darken($yellow, 20%);
+        }
+
+        &__blue {
+            background: $blue-light;
+            color: $blue;
+        }
+
+        &__teal {
+            background: rgba(30, 136, 229, 0.09);
+            color: $blue;
+        }
+
+        &__purple {
+            background: rgba(139, 92, 246, 0.1);
+            color: #7c3aed;
+        }
+    }
+
+    &__cardJobInfo {
+        flex: 1;
+        min-width: 0;
+    }
+
+    &__cardMore {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 12px 18px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: $green;
+        cursor: pointer;
+        transition: $transition-fast;
+        border-top: 1px solid $gray-100;
+
+        &:hover {
+            background: $green-light;
+            gap: 10px;
+        }
+    }
+
+    // ── Floating perk cards ───────────────────────────────────────────────
+    &__perk1 {
+        position: absolute;
+        top: -14px;
+        left: -14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 10px 16px;
+        box-shadow: $shadow-md;
+        animation: floatY 3s ease-in-out infinite;
+        z-index: 2;
+
+        strong {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: $text;
+        }
+
+        span {
+            display: block;
+            font-size: 0.7rem;
+            color: $gray-400;
+        }
+    }
+
+    &__perk2 {
+        position: absolute;
+        bottom: -14px;
+        left: -14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 10px 16px;
+        box-shadow: $shadow-md;
+        animation: floatY 3.5s 0.4s ease-in-out infinite;
+        z-index: 2;
+
+        strong {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: $text;
+        }
+
+        span {
+            display: block;
+            font-size: 0.7rem;
+            color: $gray-400;
+        }
+    }
+
+    &__perkIcon {
+        font-size: 1.3rem;
+        color: $green;
+        flex-shrink: 0;
+    }
+
+    &__perkIcon2 {
+        font-size: 1.3rem;
+        color: $green;
+        flex-shrink: 0;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatY {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 2 — JOB LISTINGS
+// ══════════════════════════════════════════════════════════════════════════
+.listings {
+    padding: 72px 0;
+    background: $gray-50;
+    border-top: 1px solid $gray-200;
+    scroll-margin-top: 80px;
+
+    // ── Empty state ───────────────────────────────────────────────────────
+    &__empty {
+        text-align: center;
+        padding: 72px 20px;
+        color: $gray-400;
+
+        svg {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+            margin-inline: auto;
+        }
+
+        h4 {
+            font-family: $font-display;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: $gray-800;
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: $gray-400;
+            max-width: 400px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+    }
+
+    // ── Speculative CTA strip ─────────────────────────────────────────────
+    &__speculativeCta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-xl;
+        padding: 24px 28px;
+        margin-top: 3rem;
+        box-shadow: $shadow-sm;
+        flex-wrap: wrap;
+
+        @media (max-width: $md) {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    &__speculativeLeft {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex: 1;
+
+        @media (max-width: $md) {
+            flex-direction: column;
+        }
+
+        strong {
+            display: block;
+            font-weight: 700;
+            color: $text;
+            font-size: 1rem;
+        }
+
+        span {
+            display: block;
+            font-size: 0.85rem;
+            color: $gray-600;
+            margin-top: 4px;
+        }
+    }
+
+    &__speculativeIcon {
+        font-size: 1.8rem;
+        color: $green;
+        flex-shrink: 0;
+    }
+}
+
+// ── Filters ───────────────────────────────────────────────────────────────
+.filters {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-xl;
+    padding: 20px 24px;
+    margin-bottom: 2rem;
+    box-shadow: $shadow-sm;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    &__label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: $gray-400;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        white-space: nowrap;
+        min-width: 110px;
+
+        svg {
+            font-size: 0.75rem;
+        }
+    }
+
+    &__pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    &__count {
+        font-size: 0.82rem;
+        color: $gray-400;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        strong {
+            color: $text;
+        }
+    }
+
+    &__clearBtn {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: $green;
+        background: $green-light;
+        border: none;
+        border-radius: $radius-full;
+        padding: 4px 12px;
+        cursor: pointer;
+        transition: $transition-fast;
+
+        &:hover {
+            background: $green;
+            color: $white;
+        }
+    }
+}
+
+.filterPill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border-radius: $radius-full;
+    background: $gray-50;
+    border: 1.5px solid $gray-200;
+    color: $gray-600;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition-fast;
+    font-family: $font-body;
+
+    &:hover {
+        border-color: $green;
+        color: $green;
+        background: $green-light;
+    }
+
+    &__active {
+        background: $green !important;
+        border-color: $green !important;
+        color: $white !important;
+    }
+
+    // smaller variant for type row
+    &__sm {
+        padding: 5px 13px;
+        font-size: 0.76rem;
+    }
+
+    svg {
+        font-size: 0.72rem;
+    }
+}
+
+// ── Job Cards ─────────────────────────────────────────────────────────────
+.jobCard {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-xl;
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: $shadow-sm;
+    transition: $transition;
+    position: relative;
+    overflow: hidden;
+
+    // coloured top border by department colour
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: $radius-xl $radius-xl 0 0;
+    }
+
+    &__green::before {
+        background: $green;
+    }
+
+    &__yellow::before {
+        background: $yellow;
+    }
+
+    &__blue::before {
+        background: $blue;
+    }
+
+    &__teal::before {
+        background: linear-gradient(90deg, $green, $blue);
+    }
+
+    &__purple::before {
+        background: linear-gradient(90deg, #7c3aed, #a855f7);
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-md;
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    &__deptIcon {
+        width: 44px;
+        height: 44px;
+        border-radius: $radius-md;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.15rem;
+        flex-shrink: 0;
+        transition: $transition-fast;
+
+        &__green {
+            background: $green-light;
+            color: $green;
+        }
+
+        &__yellow {
+            background: $yellow-light;
+            color: darken($yellow, 20%);
+        }
+
+        &__blue {
+            background: $blue-light;
+            color: $blue;
+        }
+
+        &__teal {
+            background: rgba(30, 136, 229, 0.09);
+            color: $blue;
+        }
+
+        &__purple {
+            background: rgba(139, 92, 246, 0.1);
+            color: #7c3aed;
+        }
+    }
+
+    &:hover &__deptIcon {
+        &__green {
+            background: $green;
+            color: $white;
+        }
+
+        &__yellow {
+            background: $yellow;
+            color: $text;
+        }
+
+        &__blue {
+            background: $blue;
+            color: $white;
+        }
+
+        &__teal {
+            background: $blue;
+            color: $white;
+        }
+
+        &__purple {
+            background: #7c3aed;
+            color: $white;
+        }
+    }
+
+    &__badges {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    &__title {
+        font-family: $font-display;
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: $text;
+        line-height: 1.3;
+        margin: 0;
+    }
+
+    &__dept {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: $green;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &__meta {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        span {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.8rem;
+            color: $gray-600;
+
+            svg {
+                color: $green;
+                font-size: 0.72rem;
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    &__summary {
+        font-size: 0.85rem;
+        color: $gray-600;
+        line-height: 1.65;
+        margin: 0;
+        flex: 1;
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    &__tag {
+        font-size: 0.68rem;
+        font-weight: 600;
+        color: $gray-600;
+        background: $gray-50;
+        border: 1px solid $gray-200;
+        border-radius: $radius-full;
+        padding: 3px 10px;
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: auto;
+        padding-top: 14px;
+        border-top: 1px solid $gray-100;
+        flex-wrap: wrap;
+    }
+
+    &__posted {
+        font-size: 0.72rem;
+        color: $gray-400;
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  MODAL — APPLY FORM
+// ══════════════════════════════════════════════════════════════════════════
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 46, 32, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background: $white;
+    border-radius: $radius-xl;
+    width: 100%;
+    max-width: 620px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 64px rgba(11, 107, 58, 0.2);
+    animation: slideUp 0.3s ease;
+
+    // custom scrollbar
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $gray-50;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $gray-200;
+        border-radius: 4px;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 20px 24px;
+        border-bottom: 1px solid $gray-200;
+        position: sticky;
+        top: 0;
+        background: $white;
+        z-index: 1;
+    }
+
+    &__headerLeft {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    &__headerIcon {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: $green;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    &__headerSub {
+        display: block;
+        font-size: 0.72rem;
+        color: $gray-400;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-weight: 600;
+    }
+
+    &__headerTitle {
+        font-family: $font-display;
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: $text;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    &__close {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 1.5px solid $gray-200;
+        background: $white;
+        color: $gray-400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: $transition-fast;
+        flex-shrink: 0;
+
+        &:hover {
+            background: $gray-100;
+            color: $text;
+        }
+    }
+
+    &__jobInfo {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 14px 24px;
+        background: $gray-50;
+        border-bottom: 1px solid $gray-200;
+        font-size: 0.78rem;
+        color: $gray-600;
+
+        span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            svg {
+                color: $green;
+                font-size: 0.72rem;
+            }
+        }
+    }
+
+    &__form {
+        padding: 24px;
+    }
+
+    // ── Success state ─────────────────────────────────────────────────────
+    &__success {
+        padding: 40px 28px;
+        text-align: center;
+
+        h3 {
+            font-family: $font-display;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: $text;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: $gray-600;
+            line-height: 1.7;
+            max-width: 360px;
+            margin: 0 auto 28px;
+        }
+    }
+
+    &__successIcon {
+        font-size: 3rem;
+        color: $green;
+        margin-bottom: 16px;
+        display: block;
+    }
+
+    &__successSteps {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: $gray-50;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 20px;
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    &__successStep {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.88rem;
+        color: $gray-600;
+    }
+
+    &__successStepNum {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: $green;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ── Form elements ─────────────────────────────────────────────────────────
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: $gray-800;
+    }
+
+    &__optional {
+        font-weight: 400;
+        color: $gray-400;
+        font-size: 0.75rem;
+    }
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid $gray-200;
+    border-radius: $radius-md;
+    font-size: 0.9rem;
+    font-family: $font-body;
+    color: $text;
+    background: $white;
+    transition: $transition-fast;
+    outline: none;
+    appearance: none;
+
+    &::placeholder {
+        color: $gray-400;
+    }
+
+    &:focus {
+        border-color: $green;
+        box-shadow: 0 0 0 3px rgba(11, 107, 58, 0.1);
+    }
+}
+
+.formSelect {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394A3B8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+.formTextarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+// ── File upload ───────────────────────────────────────────────────────────
+.fileUpload {
+    border: 2px dashed $gray-200;
+    border-radius: $radius-lg;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: $transition-fast;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    &:hover {
+        border-color: $green;
+        background: $green-light;
+    }
+
+    &--filled {
+        border-color: $green;
+        background: $green-light;
+        border-style: solid;
+    }
+
+    &__input {
+        display: none;
+    }
+
+    &__icon {
+        font-size: 1.4rem;
+        color: $green;
+        flex-shrink: 0;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        text-align: left;
+
+        strong {
+            font-size: 0.88rem;
+            color: $text;
+        }
+
+        span {
+            font-size: 0.75rem;
+            color: $gray-400;
+        }
+    }
+
+    &__name {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: $green;
+        word-break: break-all;
+    }
+}
+
+.formDisclaimer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: $gray-400;
+    margin-top: 10px;
+    margin-bottom: 0;
+
+    svg {
+        color: $green;
+        font-size: 0.78rem;
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  RESPONSIVE
+// ══════════════════════════════════════════════════════════════════════════
+@media (max-width: $lg) {
+
+    .hero__perk1,
+    .hero__perk2 {
+        display: none;
+    }
+
+    .hero {
+        padding: 60px 0 56px;
+    }
+}
+
+@media (max-width: $md) {
+    .hero__actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero__culturePills {
+        gap: 8px;
+    }
+
+    .filters__row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filters__label {
+        min-width: unset;
+    }
+
+    .modal {
+        max-height: 95vh;
+        border-radius: $radius-lg;
+    }
+
+    .modal__jobInfo {
+        gap: 10px;
+    }
+
+    .listings__speculativeCta {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: $sm) {
+    .hero__headline {
+        font-size: 2.1rem;
+    }
+
+    .jobCard__footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal {
+        border-radius: $radius-md;
+    }
+
+    .modal__header {
+        padding: 16px 18px;
+    }
+
+    .modal__form {
+        padding: 18px;
+    }
+
+    .modal__success {
+        padding: 28px 18px;
+    }
+
+    .shareBar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
