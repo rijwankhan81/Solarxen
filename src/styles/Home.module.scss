@@ -2,44 +2,42 @@
 @use "../styles/var" as *;
 
 
-
-.main {
-    background: #f5f7f6;
-    overflow: hidden;
-}
-
-
-
-/* HERO */
-
+// ══════════════════════════════════════════════════════════════════════════
+//  HERO
+// ══════════════════════════════════════════════════════════════════════════
 .hero {
     position: relative;
-    padding: 140px 0 80px;
+    padding: 80px 0 72px;
     overflow: hidden;
+    background: $white;
 
-    &__bg {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
     }
 
     &__bgGrid {
         position: absolute;
         inset: 0;
         background-image:
-            linear-gradient(rgba(11, 107, 58, 0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(11, 107, 58, 0.04) 1px, transparent 1px);
-        background-size: 40px 40px;
+            linear-gradient(rgba(11, 107, 58, 0.034) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(11, 107, 58, 0.034) 1px, transparent 1px);
+        background-size: 44px 44px;
+        pointer-events: none;
     }
 
     &__bgGlow1 {
         position: absolute;
-        top: -80px;
-        right: -80px;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(249, 178, 51, 0.12), transparent 70%);
+        top: -100px;
+        right: -100px;
+        width: 520px;
+        height: 520px;
+        background: radial-gradient(circle, rgba(249, 178, 51, 0.1), transparent 70%);
         border-radius: 50%;
+        pointer-events: none;
     }
 
     &__bgGlow2 {
@@ -48,35 +46,27 @@
         left: -80px;
         width: 400px;
         height: 400px;
-        background: radial-gradient(circle, rgba(11, 107, 58, 0.08), transparent 70%);
+        background: radial-gradient(circle, rgba(11, 107, 58, 0.07), transparent 70%);
         border-radius: 50%;
+        pointer-events: none;
     }
 
-    &__badge {
-        display: inline-flex !important;
-        align-items: center;
-        gap: 8px;
-        background: $green-light !important;
-        color: $green !important;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        padding: 8px 16px;
-        border-radius: $radius-full;
-        margin-bottom: 1.25rem;
+    &__left {
+        position: relative;
+        z-index: 1;
+        animation: fadeUp 0.7s ease both;
     }
 
     &__headline {
         font-family: $font-display;
-        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-size: clamp(2.2rem, 4.8vw, 3.6rem);
         font-weight: 900;
-        line-height: 1.15;
+        line-height: 1.18;
         color: $text;
         margin-bottom: 1.25rem;
     }
 
-    &__headlineAccent {
+    &__accent {
         color: $green;
         position: relative;
 
@@ -93,122 +83,379 @@
     }
 
     &__sub {
-        font-size: 1.1rem;
+        font-size: 1.08rem;
         color: $gray-600;
         line-height: 1.75;
         max-width: 520px;
-        margin-bottom: 2rem;
+        margin-bottom: 1.75rem;
     }
 
     &__actions {
         display: flex;
-        gap: 16px;
+        gap: 14px;
         flex-wrap: wrap;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
     }
 
-    &__quickStats {
+    &__trust {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__trustItem {
         display: flex;
         align-items: center;
-        gap: 20px;
-        background: $white;
-        border: 1px solid $gray-200;
-        border-radius: $radius-lg;
-        padding: 16px 24px;
-        box-shadow: $shadow-sm;
-        display: inline-flex;
+        gap: 10px;
+        font-size: 0.88rem;
+        color: $gray-600;
+        font-weight: 500;
     }
 
-    &__qs {
+    &__trustIcon {
+        color: $green;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatY {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+// ── Hero Visual ───────────────────────────────────────────────────────────
+.heroVisual {
+    position: relative;
+    animation: fadeUp 0.7s 0.15s ease both;
+
+    &__card {
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-xl;
+        box-shadow: $shadow-lg;
+        overflow: hidden;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 18px;
+        background: $gray-50;
+        border-bottom: 1px solid $gray-200;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: $gray-800;
+    }
+
+    &__headerLogo {
+        font-size: 1.3rem;
+        color: $green;
+    }
+
+    &__svg {
+        width: 100%;
+        display: block;
+    }
+
+    &__stats {
+        display: flex;
+        padding: 16px 18px;
+        gap: 8px;
+        border-bottom: 1px solid $gray-100;
+    }
+
+    &__stat {
+        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 4px;
+        text-align: center;
+    }
+
+    &__statDiv {
+        width: 1px;
+        background: $gray-200;
+        align-self: stretch;
+    }
+
+    &__statVal {
+        font-family: $font-display;
+        font-size: 1.2rem;
+        font-weight: 800;
+
+        &--green {
+            color: $green;
+        }
+
+        &--blue {
+            color: $blue;
+        }
+
+        &--yellow {
+            color: darken($yellow, 18%);
+        }
+    }
+
+    &__statLabel {
+        font-size: 0.7rem;
+        color: $gray-400;
+        text-align: center;
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        background: $yellow-light;
+        font-size: 0.82rem;
+        color: darken($yellow, 28%);
+        font-weight: 500;
 
         strong {
-            font-family: $font-display;
-            font-size: 1.35rem;
+            color: $text;
+        }
+    }
+
+    &__footerIcon {
+        color: darken($yellow, 18%);
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    // Floating cards
+    &__float1 {
+        position: absolute;
+        top: -14px;
+        left: -14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 10px 16px;
+        box-shadow: $shadow-md;
+        animation: floatY 3s ease-in-out infinite;
+        z-index: 2;
+
+        strong {
+            display: block;
+            font-size: 1rem;
             font-weight: 800;
             color: $green;
         }
 
         span {
-            font-size: 0.72rem;
+            display: block;
+            font-size: 0.7rem;
             color: $gray-400;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
         }
     }
 
-    &__qsDivider {
-        width: 1px;
-        height: 36px;
-        background: $gray-200;
+    &__float1Icon {
+        font-size: 1.3rem;
+        color: $green;
+        flex-shrink: 0;
+    }
+
+    &__float2 {
+        position: absolute;
+        bottom: -14px;
+        right: -14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        padding: 10px 16px;
+        box-shadow: $shadow-md;
+        animation: floatY 3.5s 0.4s ease-in-out infinite;
+        z-index: 2;
+
+        strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            color: $text;
+        }
+
+        span {
+            display: block;
+            font-size: 0.7rem;
+            color: $gray-400;
+        }
+    }
+
+    &__float2Icon {
+        font-size: 1.3rem;
+        color: $blue;
+        flex-shrink: 0;
+    }
+}
+
+
+.featureSection {
+    padding: 72px 0;
+    background: #e9f5ef78;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION  — SAVE MORE EVERY MONTH
+// ══════════════════════════════════════════════════════════════════════════
+.saveSection {
+    padding: 72px 0;
+    background: $gray-50;
+    border-top: 1px solid $gray-200;
+
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
+
+    @media(max-width:$lg) {
+        padding: 50px 0;
     }
 
     &__visual {
         display: flex;
-        align-items: center;
         justify-content: center;
     }
 
-    .heroImage {
-        position: relative;
-        height: 600px;
-        border-radius: 30px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    }
-
-    .image {
-        object-fit: cover;
+    &__svg {
         width: 100%;
-        height: 100%;
+        max-width: 480px;
+        border-radius: $radius-xl;
+        border: 1px solid $gray-200;
+        box-shadow: $shadow-sm;
     }
 
-    .floatingCardTop,
-    .floatingCardBottom {
-        position: absolute;
-        background: white;
-        padding: 20px;
-        border-radius: 18px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    &__badge {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: $green-light;
+        border: 1px solid lighten($green, 42%);
+        border-radius: $radius-lg;
+        padding: 16px 20px;
+        margin-top: 1.5rem;
 
-        p {
-            font-size: 14px;
-            color: #777;
+        svg {
+            font-size: 1.6rem;
+            color: $green;
+            flex-shrink: 0;
         }
 
-        h3 {
-            margin: 10px 0;
-            font-size: 30px;
-            color: $gray-800;
+        strong {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: $green;
         }
 
         span {
-            color: $green;
-            font-weight: 600;
+            display: block;
+            font-size: 0.82rem;
+            color: $gray-600;
+            margin-top: 2px;
+        }
+    }
+}
+
+// ── Bill comparison bars ───────────────────────────────────────────────────
+.billCompare {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 1.5rem 0;
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    &__label {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: $gray-600;
+        width: 110px;
+        flex-shrink: 0;
+    }
+
+    &__track {
+        flex: 1;
+        height: 14px;
+        background: $gray-100;
+        border-radius: $radius-full;
+        overflow: hidden;
+    }
+
+    &__fill {
+        height: 100%;
+        border-radius: $radius-full;
+        transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &--gray {
+            background: $gray-400;
+        }
+
+        &--green {
+            background: linear-gradient(90deg, $green, lighten($green, 15%));
         }
     }
 
-    .floatingCardTop {
-        top: 30px;
-        left: 30px;
-    }
+    &__value {
+        font-family: $font-display;
+        font-size: 0.95rem;
+        font-weight: 800;
+        color: $text;
+        width: 70px;
+        text-align: right;
+        flex-shrink: 0;
 
-    .floatingCardBottom {
-        bottom: 30px;
-        right: 30px;
+        &--green {
+            color: $green;
+        }
     }
 }
 
-
-
-
-/* PROCESS */
-
-.process {
-    padding: 100px 0;
-    background: white;
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 2 — EARN FROM EXCESS ENERGY
+// ══════════════════════════════════════════════════════════════════════════
+.earnSection {
+    padding: 72px 0;
+    background: $white;
 
     @media(max-width:$xl) {
         padding: 70px 0;
@@ -217,118 +464,80 @@
     @media(max-width:$lg) {
         padding: 50px 0;
     }
-}
 
-.processGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-}
-
-.processCard {
-    background: white;
-    padding: 35px;
-    border-radius: 24px;
-    text-align: center;
-    transition: 0.3s;
-
-    &:hover {
-        transform: translateY(-10px);
+    &__visual {
+        display: flex;
+        justify-content: center;
     }
 
-    h3 {
-        margin: 25px 0 15px;
-        font-family: $font-display;
-        font-size: 1.1rem;
-        font-weight: 800;
-        color: $text;
-    }
-
-    p {
-        color: $gray-600;
-        line-height: 1.8;
-    }
-}
-
-.processIcon {
-    width: 70px;
-    height: 70px;
-    margin: auto;
-    border-radius: 20px;
-    background: rgba(14, 121, 70, 0.1);
-    color: $green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-}
-
-
-
-/* DASHBOARD */
-
-.dashboard {
-    padding: 100px 0;
-    background: #F9FAFB;
-
-    @media(max-width:$xl) {
-        padding: 70px 0;
-    }
-
-    @media(max-width:$lg) {
-        padding: 50px 0;
-    }
-}
-
-.dashboardStats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-}
-
-.dashboardCard {
-    background: white;
-    padding: 30px;
-    border-radius: 24px;
-
-    span {
-        color: #777;
-        font-size: 14px;
-    }
-
-    h3 {
-        margin: 15px 0;
-        font-family: $font-display;
-        font-size: 2.1rem;
-        font-weight: 800;
-        color: $text;
-    }
-
-    p {
-        color: $green;
-        font-weight: 600;
-    }
-}
-
-.chart {
-
-    margin-top: 40px;
-
-}
-
-.chartLine {
-    .image {
-        object-fit: cover;
+    &__svg {
         width: 100%;
-        height: auto;
+        max-width: 520px;
+        border-radius: $radius-xl;
+        border: 1px solid $gray-200;
+        box-shadow: $shadow-sm;
+    }
+
+    &__steps {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 1.5rem 0 2rem;
+    }
+
+    &__step {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: $gray-50;
+        border: 1px solid $gray-200;
+        border-radius: $radius-md;
+        padding: 14px 16px;
+        transition: $transition-fast;
+
+        &:hover {
+            background: $green-light;
+            border-color: lighten($green, 40%);
+        }
+
+        strong {
+            display: block;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: $text;
+            margin-bottom: 2px;
+        }
+
+        span {
+            display: block;
+            font-size: 0.82rem;
+            color: $gray-600;
+            line-height: 1.5;
+        }
+    }
+
+    &__stepIcon {
+        width: 40px;
+        height: 40px;
+        background: $green-light;
+        color: $green;
+        border-radius: $radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.05rem;
+        flex-shrink: 0;
     }
 }
 
-/* WHY US */
-
-.whyUs {
-    padding: 80px 0;
-    background: white;
+// ══════════════════════════════════════════════════════════════════════════
+//  SECTION 3 — MONITOR EVERYTHING IN REAL TIME
+// ══════════════════════════════════════════════════════════════════════════
+.monitorSection {
+    padding: 72px 0;
+    background: $gray-50;
+    border-top: 1px solid $gray-200;
+    border-bottom: 1px solid $gray-200;
 
     @media(max-width:$xl) {
         padding: 70px 0;
@@ -338,114 +547,382 @@
         padding: 50px 0;
     }
 
-    .featureCard {
+    &__features {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin: 1.5rem 0 2rem;
+
+        @media (max-width: $sm) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__feature {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: $white;
+        border: 1px solid $gray-200;
+        border-radius: $radius-md;
+        padding: 12px 14px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: $gray-800;
+        transition: $transition-fast;
+
+        &:hover {
+            border-color: lighten($green, 40%);
+            background: $green-light;
+        }
+    }
+
+    &__featureIcon {
+        width: 32px;
+        height: 32px;
+        background: $green-light;
+        color: $green;
+        border-radius: $radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+}
+
+// ── Phone Mock ────────────────────────────────────────────────────────────
+.phoneMock {
+    display: flex;
+    justify-content: center;
+
+    &__screen {
+        width: 100%;
+        max-width: 320px;
         background: $white;
         border: 1px solid $gray-200;
         border-radius: $radius-xl;
-        padding: 32px 28px;
-        box-shadow: $shadow-sm;
-        transition: $transition;
-        position: relative;
+        box-shadow: $shadow-lg;
         overflow: hidden;
-        height: 100%;
+        padding: 18px;
+    }
 
-        &:hover {
-            transform: translateY(-6px);
-            box-shadow: $shadow-lg;
-            border-color: lighten($green, 40%);
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.92rem;
+        font-weight: 800;
+        color: $text;
+        margin-bottom: 16px;
 
-            .featureCard__arrow {
-                opacity: 1;
-                transform: translateX(0);
-            }
-
-            .featureCard__icon {
-                background: $green;
-                color: $white;
-            }
-        }
-
-        &__icon {
-            width: 56px;
-            height: 56px;
-            background: $green-light;
+        svg:first-child {
             color: $green;
-            border-radius: $radius-md;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 18px;
-            transition: $transition;
+            font-size: 1.2rem;
+        }
+    }
+
+    &__bigStat {
+        background: $green-light;
+        border-radius: $radius-lg;
+        padding: 16px;
+        margin-bottom: 14px;
+        text-align: center;
+
+        span {
+            display: block;
+            font-size: 0.72rem;
+            color: $green;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
 
-        &__title {
+        strong {
             font-family: $font-display;
-            font-size: 1.1rem;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: $green;
+
+            small {
+                font-size: 1rem;
+                font-weight: 700;
+            }
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    &__gridItem {
+        background: $gray-50;
+        border: 1px solid $gray-200;
+        border-radius: $radius-md;
+        padding: 10px 12px;
+
+        span {
+            display: block;
+            font-size: 0.68rem;
+            color: $gray-400;
+            margin-bottom: 4px;
+        }
+
+        strong {
+            font-family: $font-display;
+            font-size: 1.05rem;
             font-weight: 800;
             color: $text;
-            margin-bottom: 10px;
         }
+    }
 
-        &__desc {
-            font-size: 0.88rem;
-            color: $gray-600;
-            line-height: 1.7;
-        }
-
-        &__arrow {
-            position: absolute;
-            bottom: 24px;
-            right: 24px;
+    &__gridVal {
+        &--green {
             color: $green;
-            font-size: 1rem;
-            opacity: 0;
-            transform: translateX(-8px);
-            transition: $transition;
+        }
+
+        &--blue {
+            color: $blue;
+        }
+
+        &--yellow {
+            color: darken($yellow, 18%);
+        }
+    }
+
+    &__chart {
+        background: $gray-50;
+        border: 1px solid $gray-200;
+        border-radius: $radius-md;
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+
+    &__chartTitle {
+        font-size: 0.7rem;
+        color: $gray-400;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 8px;
+    }
+
+    &__chartBars {
+        display: flex;
+        align-items: flex-end;
+        gap: 4px;
+        height: 48px;
+    }
+
+    &__chartBar {
+        flex: 1;
+        background: linear-gradient(180deg, $green, lighten($green, 20%));
+        border-radius: 2px 2px 0 0;
+        opacity: 0.85;
+    }
+
+    &__notif {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.78rem;
+        color: $green;
+        font-weight: 600;
+        background: $green-light;
+        border-radius: $radius-full;
+        padding: 8px 14px;
+
+        svg {
+            font-size: 0.85rem;
         }
     }
 }
 
 
 
-/* RESPONSIVE */
+// ══════════════════════════════════════════════════════════════════════════
+//  WHY SOLARXEN — 6 CARDS
+// ══════════════════════════════════════════════════════════════════════════
+.whySection {
+    padding: 72px 0;
+    background: $gray-50;
 
-@media (max-width: $xl) {
+    @media(max-width:$xl) {
+        padding: 70px 0;
+    }
 
-
-    .processGrid,
-    .dashboardStats,
-    .featureGrid {
-        grid-template-columns: repeat(2, 1fr);
+    @media(max-width:$lg) {
+        padding: 50px 0;
     }
 }
 
+.whyCard {
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-xl;
+    padding: 28px 24px;
+    height: 100%;
+    box-shadow: $shadow-sm;
+    transition: $transition;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: $radius-xl $radius-xl 0 0;
+    }
+
+    &--green::before {
+        background: $green;
+    }
+
+    &--yellow::before {
+        background: $yellow;
+    }
+
+    &--blue::before {
+        background: $blue;
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-md;
+    }
+
+    &__icon {
+        width: 52px;
+        height: 52px;
+        border-radius: $radius-md;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.35rem;
+        margin-bottom: 16px;
+        transition: $transition-fast;
+
+        .whyCard--green & {
+            background: $green-light;
+            color: $green;
+        }
+
+        .whyCard--yellow & {
+            background: $yellow-light;
+            color: darken($yellow, 18%);
+        }
+
+        .whyCard--blue & {
+            background: $blue-light;
+            color: $blue;
+        }
+    }
+
+    &:hover &__icon {
+        .whyCard--green & {
+            background: $green;
+            color: $white;
+        }
+
+        .whyCard--yellow & {
+            background: $yellow;
+            color: $text;
+        }
+
+        .whyCard--blue & {
+            background: $blue;
+            color: $white;
+        }
+    }
+
+    &__title {
+        font-family: $font-display;
+        font-size: 1.08rem;
+        font-weight: 800;
+        color: $text;
+        margin-bottom: 8px;
+    }
+
+    &__desc {
+        font-size: 0.88rem;
+        color: $gray-600;
+        line-height: 1.7;
+        margin: 0;
+    }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  RESPONSIVE
+// ══════════════════════════════════════════════════════════════════════════
 @media (max-width: $lg) {
 
-    .processGrid,
-
-    .dashboardStats,
-    .featureGrid {
-        grid-template-columns: 1fr;
+    .heroVisual__float1,
+    .heroVisual__float2 {
+        display: none;
     }
 
     .hero {
-        padding-top: 60px;
+        padding: 60px 0 56px;
     }
+}
 
-    .heroContent h1 {
-        font-size: 48px;
-    }
-
-    .stats {
-
-        gap: 20px;
-    }
-
-    .heroButtons {
+@media (max-width: $md) {
+    .hero__actions {
         flex-direction: column;
+        align-items: flex-start;
     }
 
+    .flowDiagram__card {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
 
+    .flowDiagram__step {
+        align-items: flex-start;
+    }
 
+    .billCompare__row {
+        flex-wrap: wrap;
+    }
+
+    .billCompare__label {
+        width: 100%;
+    }
+}
+
+@media (max-width: $sm) {
+    .hero__headline {
+        font-size: 2rem;
+    }
+
+    .heroVisual__stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .heroVisual__statDiv {
+        display: none;
+    }
+
+    .saveSection__badge {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .flowDiagram__card {
+        padding: 12px 14px;
+    }
+
+    .phoneMock__bigStat strong {
+        font-size: 1.8rem;
+    }
 }

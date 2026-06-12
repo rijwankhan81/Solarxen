@@ -21,7 +21,7 @@ export default function Header() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="Solarxen is a smart energy platform that allows you to earn from your rooftop by installing solar panels. Generate power and receive monthly income through our innovative platform."
+          content="Generate your own electricity, reduce your monthly bills, and earn from excess energy exported to the grid."
         />
         <link rel="icon" href="/images/logo.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

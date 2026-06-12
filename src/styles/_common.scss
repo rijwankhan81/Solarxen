@@ -130,3 +130,39 @@ body {
         transform: translateY(-2px);
     }
 }
+
+.liveDot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulseDot 1.6s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.45;
+        transform: scale(1.5);
+    }
+}
+
+.liveBadge {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    background: $green !important;
+    color: $white !important;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: $radius-full;
+    margin-left: auto;
+}
