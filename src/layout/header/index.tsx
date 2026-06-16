@@ -2,14 +2,29 @@ import Link from "next/link";
 import styles from "./header.module.scss";
 import { Container } from "react-bootstrap";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NextImage from "@/hooks/NextImage";
 import Head from "next/head";
 import { usePathname } from "next/navigation";
 import { navItems } from "@/constants/navMenu";
+import { companyNav } from "@/constants/companyNav";
 export default function Header() {
   const [show, setShow] = useState(false);
   const pathname = usePathname();
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1199);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const toggleClass = () => {
     setShow((prevState) => !prevState);
@@ -65,6 +80,28 @@ export default function Header() {
                     </li>
                   );
                 })}
+                {isMobile
+                  ? companyNav.map((item) => {
+                      const isActive = pathname === item.href;
+
+                      return (
+                        <li
+                          key={item.href}
+                          className={styles.navItem}
+                          onClick={toggleClass}
+                        >
+                          <Link
+                            href={item.href}
+                            className={`${styles.navLink} ${
+                              isActive ? styles.active : ""
+                            }`}
+                          >
+                            {item.label}
+                          </Link>
+                        </li>
+                      );
+                    })
+                  : null}
               </ul>
               <div className={styles.btns}>
                 <div className={styles.btn}>
