@@ -19,6 +19,7 @@ import {
   FaLeaf,
   FaMapMarkerAlt,
   FaClock,
+  FaPlay,
 } from "react-icons/fa";
 import { MdTrendingUp } from "react-icons/md";
 
@@ -271,9 +272,9 @@ const PressIndex: NextPage<Props> = ({ releases }) => {
                   <Button className={styles.btn__primary}>
                     <FaDownload /> Download Media Kit
                   </Button>
-                  <Button className={styles.btn__outline}>
-                    <FaEnvelope /> Contact Media Team
-                  </Button>
+                  <Link href="/contact" className={styles.btn__outline}>
+                    <FaPlay /> Contact Media Team
+                  </Link>
                 </div>
               </Col>
               <Col lg={6}>

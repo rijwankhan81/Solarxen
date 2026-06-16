@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import NextImage from "@/hooks/NextImage";
 import CTA from "@/component/cta";
+import Link from "next/link";
 
 export default function HowItWorks() {
   return (
@@ -34,17 +35,19 @@ export default function HowItWorks() {
               </h1>
 
               <p>
-                A simple smart energy platform that helps you generate
-                electricity and earn monthly income from your rooftop.
+                Install a Solarxen rooftop solar package and let your system
+                intelligently manage energy usage. Use solar power first, reduce
+                electricity bills, and export surplus energy to the grid for
+                additional value.
               </p>
 
               <div className={styles.hero__actions}>
                 <Button className={styles.btn__primary}>
                   Join the Network <FaArrowRight />
                 </Button>
-                <Button className={styles.btn__outline}>
+                <Link href="/packages" className={styles.btn__outline}>
                   <FaPlay /> Explore Packages
-                </Button>
+                </Link>
               </div>
 
               <div className={styles.heroTags}>

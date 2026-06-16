@@ -34,6 +34,7 @@ import Head from "next/head";
 import CTA from "@/component/cta";
 import Testimonials from "@/component/testimonials";
 import BangladeshMap from "@/component/networkmap";
+import Link from "next/link";
 
 // ── Animated Counter Hook ──────────────────────────────────────────────────
 function useCounter(target: number, duration = 2000, start = false) {
@@ -166,24 +167,24 @@ export default function LiveEnergyNetwork() {
                   <span className={styles.liveDot} /> Live Network — Bangladesh
                 </Badge>
                 <h1 className={styles.hero__headline}>
-                  Connected Rooftops.
+                  A Smarter Rooftop
                   <br />
                   <span className={styles.hero__headlineAccent}>
-                    Shared Energy Future.
+                    Energy Network
                   </span>
                 </h1>
                 <p className={styles.hero__sub}>
-                  Explore Solarxen's growing network of connected solar
-                  installations generating clean electricity and creating value
-                  across communities.
+                  Thousands of connected solar systems generating clean
+                  electricity, reducing energy costs, and contributing to a more
+                  sustainable energy future.
                 </p>
                 <div className={styles.hero__actions}>
                   <Button className={styles.btn__primary}>
                     Join the Network <FaArrowRight />
                   </Button>
-                  <Button className={styles.btn__outline}>
+                  <Link href="/packages" className={styles.btn__outline}>
                     <FaPlay /> Explore Packages
-                  </Button>
+                  </Link>
                 </div>
                 <div className={styles.hero__quickStats}>
                   <div className={styles.hero__qs}>

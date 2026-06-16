@@ -11,6 +11,7 @@ import { useState, useMemo } from "react";
 import Head from "next/head";
 import { FaArrowRight, FaPlay } from "react-icons/fa";
 import Testimonials from "@/component/testimonials";
+import Link from "next/link";
 
 export default function Earnings() {
   const [capacity, setCapacity] = useState(5);
@@ -46,18 +47,17 @@ export default function Earnings() {
               <h1>See How Your Rooftop Can Generate Income</h1>
 
               <p>
-                Track energy production, monitor grid exports, and understand
-                how your solar system can create long-term financial value in
-                Bangladesh.
+                Understand how rooftop solar can reduce electricity costs and
+                generate additional value through excess energy exports.
               </p>
 
               <div className={styles.hero__actions}>
                 <Button className={styles.btn__primary}>
                   Calculate My Earnings <FaArrowRight />
                 </Button>
-                <Button className={styles.btn__outline}>
-                  <FaPlay /> Explore Solar Packages
-                </Button>
+                <Link href="/packages" className={styles.btn__outline}>
+                  <FaPlay /> Explore Packages
+                </Link>
               </div>
             </div>
           </Container>

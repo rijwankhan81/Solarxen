@@ -42,6 +42,7 @@ import Packages from "@/component/packages";
 import CTA from "@/component/cta";
 import Header from "@/layout/header";
 import Footer from "@/layout/footer";
+import Link from "next/link";
 
 // ── InView Hook ────────────────────────────────────────────────────────────
 function useInView(threshold = 0.2) {
@@ -473,9 +474,10 @@ const HomePage: NextPage = () => {
                   <Button className={styles.btn__primary}>
                     Get Free Consultation <FaArrowRight />
                   </Button>
-                  <Button className={styles.btn__outline}>
+
+                  <Link href="/how-it-works" className={styles.btn__outline}>
                     <FaPlay /> See How It Works
-                  </Button>
+                  </Link>
                 </div>
 
                 {/* quick trust row */}

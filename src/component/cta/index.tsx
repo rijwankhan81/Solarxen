@@ -2,6 +2,7 @@
 import { Badge, Button, Container } from "react-bootstrap";
 import styles from "./cta.module.scss";
 import { FaArrowRight, FaMobileAlt, FaCheckCircle } from "react-icons/fa";
+import Link from "next/link";
 
 export default function CTA() {
   return (
@@ -21,12 +22,12 @@ export default function CTA() {
               smarter future while generating real value from your rooftop.
             </p>
             <div className={styles.cta__actions}>
-              <Button className={styles.btn__primary}>
+              <Link href="/contact" className={styles.btn__primary}>
                 Join Solarxen Network <FaArrowRight />
-              </Button>
-              <Button className={styles.btn__outline}>
+              </Link>
+              <Link href="/contact" className={styles.btn__outline}>
                 <FaMobileAlt /> Get Free Consultation
-              </Button>
+              </Link>
             </div>
             <div className={styles.cta__trust}>
               {[

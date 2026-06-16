@@ -3,31 +3,38 @@ import {
   FaBolt,
   FaChartLine,
   FaMoneyBillWave,
+  FaMobileAlt,
 } from "react-icons/fa";
 
 export const processData = [
   {
     id: 1,
-    title: "Install Solar",
+    title: "Choose Your Solarxen Package",
     desc: "We install a premium rooftop solar system on your property.",
-    icon: <FaSolarPanel />,
+    icon: <FaMoneyBillWave />,
   },
   {
     id: 2,
-    title: "Connect Inverter",
-    desc: "Smart inverters connect your system to the national grid.",
-    icon: <FaBolt />,
+    title: "Professional Installation",
+    desc: "Our certified team installs your solar system and connects it safely to your property.",
+    icon: <FaSolarPanel />,
   },
   {
     id: 3,
-    title: "Generate Electricity",
-    desc: "Sunlight is converted into clean, usable electricity.",
-    icon: <FaChartLine />,
+    title: "Smart Power Management",
+    desc: "Solarxen automatically prioritizes your own electricity consumption before sending excess energy to the grid.",
+    icon: <FaBolt />,
   },
   {
     id: 4,
-    title: "Earn Monthly Income",
-    desc: "Receive regular payouts for the energy you supply to the grid.",
-    icon: <FaMoneyBillWave />,
+    title: "Export Excess Energy",
+    desc: "Unused electricity is exported through net metering, helping you earn credits or additional value.",
+    icon: <FaChartLine />,
+  },
+  {
+    id: 5,
+    title: "Monitor Everything",
+    desc: "Track generation, consumption, savings, exports, and system performance in real time through the Solarxen app.",
+    icon: <FaMobileAlt />,
   },
 ];

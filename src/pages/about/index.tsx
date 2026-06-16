@@ -33,6 +33,7 @@ import Footer from "@/layout/footer";
 import Header from "@/layout/header";
 import CTA from "@/component/cta";
 import Head from "next/head";
+import Link from "next/link";
 
 // ── Animated Counter Hook ──────────────────────────────────────────────────
 function useCounter(target: number, duration = 2200, start = false) {
@@ -593,9 +594,9 @@ export default function SolarxenHome() {
                   <Button className={styles.btn__primary}>
                     Join Solarxen Network <FaArrowRight />
                   </Button>
-                  <Button className={styles.btn__outline}>
-                    <FaPlay /> Explore Solar Packages
-                  </Button>
+                  <Link href="/packages" className={styles.btn__outline}>
+                    <FaPlay /> Explore Packages
+                  </Link>
                 </div>
 
                 {/* Trust bar */}
