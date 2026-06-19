@@ -36,8 +36,8 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: $green-light ;
-    color: $green ;
+    background: $green-light !important;
+    color: $green !important;
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -47,8 +47,8 @@ body {
     margin-bottom: 0.75rem;
 
     &--white {
-        background: rgba(255, 255, 255, 0.15);
-        color: $white ;
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: $white !important;
     }
 }
 
